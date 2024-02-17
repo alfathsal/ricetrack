@@ -23,7 +23,7 @@ const varietasOptions = ['Ciherang', 'Muncul', 'Mentik Wangi', 'IR42', 'Ketan'];
  */
 const AddRice = {
   oninit (vnode) {
-  
+    /*
     // Format current date and time in a "DD-MM-YYYY" HH:mm format
     const now = new Date()
     const day = String(now.getDate()).padStart(2, '0')
@@ -33,6 +33,7 @@ const AddRice = {
     const minutes = String(now.getMinutes()).padStart(2, '0')
 
     vnode.state.tgltransaksi = `${day}-${month}-${year} ${hours}:${minutes}`
+    */
 
     // Initialize Latitude and Longitude
     if (navigator.geolocation) {
@@ -177,7 +178,7 @@ const _updateReporters = (vnode, reporterIndex) => {
  * Extract the appropriate values to pass to the create record transaction.
  */
 const _handleSubmit = (signingKey, state) => {
-
+  /*
   // Mengonversi 'DD-MM-YYYY HH:mm' ke format 'YYYY-MM-DDTHH:mm'
   const parts = state.tgltransaksi.split(" ")
   const dateParts = parts[0].split("-")
@@ -186,6 +187,7 @@ const _handleSubmit = (signingKey, state) => {
   // Konversi string tanggal yang sudah diformat ke timestamp Tanggal Produksi
   const tgltransaksiTimestamp = new Date(formattedDate).getTime()
   // Pastikan hasilnya adalah angka yang valid
+  
   if (isNaN(tgltransaksiTimestamp)) {
     alert("Format tanggal tidak valid. Gunakan format DD-MM-YYYY HH:mm")
     return
@@ -198,6 +200,8 @@ const _handleSubmit = (signingKey, state) => {
     alert("Format tanggal produksi tidak valid. Gunakan format DD-MM-YYYY HH:mm")
     return
   }
+  */
+
   const addTwoYears = () => {
     const now = new Date();
     const year = now.getFullYear();
@@ -240,11 +244,6 @@ const _handleSubmit = (signingKey, state) => {
         name: 'varietas',
         stringValue: state.varietas,
         dataType: payloads.createRecord.enum.STRING
-      },
-      {
-        name: 'tgltransaksi',
-        intValue: tgltransaksiTimestamp,
-        dataType: payloads.createRecord.enum.INT
       },
       {
         name: 'kedaluwarsa',

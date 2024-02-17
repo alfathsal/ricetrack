@@ -10,11 +10,6 @@
             "stringValue": "Muncul"
           },
           {
-            "name": "tgltransaksi",
-            "dataType": 2,
-            "intValue": 1279895874
-          },
-          {
             "name": "kedaluwarsa",
             "dataType": 2,
             "intValue": 1343037600
@@ -54,11 +49,6 @@
             "stringValue": "Ketan"
           },
           {
-            "name": "tgltransaksi",
-            "dataType": 2,
-            "intValue": 1406129874
-          },
-          {
             "name": "kedaluwarsa",
             "dataType": 2,
             "intValue": 1469268000
@@ -93,11 +83,6 @@
             "name": "varietas",
             "dataType": 1,
             "stringValue": "IR42"
-          },
-          {
-            "name": "tgltransaksi",
-            "dataType": 2,
-            "intValue": 1406111874
           },
           {
             "name": "kedaluwarsa",

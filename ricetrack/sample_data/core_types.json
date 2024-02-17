@@ -8,11 +8,6 @@
           "required": true
         },
         {
-          "name": "tgltransaksi",
-          "dataType": 2,
-          "required": false
-        },
-        {
           "name": "berat",
           "dataType": 2,
           "required": true
@@ -31,12 +26,6 @@
           "name": "harga",
           "dataType": 2,
           "required": true
-        },
-        {
-          "name": "shock",
-          "dataType": 1,
-          "required": false
-
         }
     ]
   }

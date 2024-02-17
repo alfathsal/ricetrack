@@ -33,7 +33,7 @@ const typedWidget = state => {
   if (property.dataType === 'INT' || property.dataType === 'FLOAT') {
     return m(LineGraphWidget, { updates: property.updates })
   }
-
+/*
   if (property.name === 'shock') {
     return m(LineGraphWidget, {
       updates: property.updates.map(update => {
@@ -44,7 +44,7 @@ const typedWidget = state => {
       })
     })
   }
-
+*/
   return null
 }
 
@@ -137,7 +137,7 @@ const typedInput = state => {
     let formattedValue = parseInt(numericValue, 10).toLocaleString('id-ID');
     return 'Rp.' + formattedValue;
   };
-
+/*
   if (name === 'shock') {
     return [
       m('.col.md-4.mr-1',
@@ -152,7 +152,7 @@ const typedInput = state => {
         }))
     ]
   }
-
+*/
   if (name === 'kedaluwarsa') {
     return m('.col-md-8', [
       m('input.form-control', {

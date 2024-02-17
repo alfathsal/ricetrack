@@ -107,7 +107,7 @@ const updateProperty = (update, oldValue) => {
 
     property.stringValue = JSON.stringify(intHarga)
 
-  } else if (property.name === 'shock') {
+  } /*else if (property.name === 'shock') {
     oldValue = JSON.parse(oldValue)
 
     const defaultShock = { accel: 0, duration: 0 }
@@ -119,7 +119,7 @@ const updateProperty = (update, oldValue) => {
   } else {
     throw new Error(`Bad update in JSON: ${property.name}`)
   }
-
+*/
   return property
 }
 
