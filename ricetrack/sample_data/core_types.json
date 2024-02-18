@@ -191,6 +191,11 @@
         "name": "price",
         "dataType": 3,
         "required": true
+      },
+      {
+        "name": "location",
+        "dataType": 4,
+        "required": true
       }
     ]
   },

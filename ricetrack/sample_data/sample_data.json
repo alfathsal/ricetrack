@@ -24,8 +24,8 @@
         },
         {
           "name": "irrigation",
-          "dataType": 1,
-          "stringValue": "true"
+          "dataType": 5,
+          "boolValue": true
         }
       ]
     },
@@ -53,8 +53,8 @@
         },
         {
           "name": "irrigation",
-          "dataType": 1,
-          "stringValue": "false"
+          "dataType": 5,
+          "boolValue": false
         }
       ]
     },
@@ -321,6 +321,14 @@
           "name": "price",
           "dataType": 3,
           "floatValue": 9500
+        },
+        {
+          "name": "location",
+          "dataType": 4,
+          "locationValue": {
+            "latitude": -6222222,
+            "longitude": 107011111
+          }
         }
       ]
     },
