@@ -1,169 +1,424 @@
 {
   "records": [
     {
-      "recordId": "GKP-MCL-230710-P-MDN30-1",
-      "recordType": "rice",
+      "recordId": "FIELD-001",
+      "recordType": "Field",
       "properties": [
-          {
-            "name": "varietas",
-            "dataType": 1,
-            "stringValue": "Muncul"
-          },
-          {
-            "name": "kedaluwarsa",
-            "dataType": 2,
-            "intValue": 1343037600
-          },
-          {
-            "name": "berat",
-            "dataType": 2,
-            "intValue": 5
-          },
-          {
-            "name": "harga",
-            "dataType": 2,
-            "intValue": 95000
-          },
-          {
-            "name": "lokasi",
-            "dataType": 4,
-            "locationValue": {
-              "latitude": -6288573.200996969, 
-              "longitude": 107041847.48897681
-            }
+        {
+          "name": "area",
+          "dataType": 2,
+          "intValue": 2000
+        },
+        {
+          "name": "location",
+          "dataType": 4,
+          "locationValue": {
+            "latitude": -6222222,
+            "longitude": 107011111
           }
-      ],
-      "ownerIndex": 0,
-      "custodianIndex": 2,
-      "reporterIndex": 1,
-      "reportableProperties": ["lokasi", "harga"]
+        },
+        {
+          "name": "address",
+          "dataType": 1,
+          "stringValue": "Bekasi, West Java"
+        },
+        {
+          "name": "irrigation",
+          "dataType": 1,
+          "stringValue": "true"
+        }
+      ]
     },
-
     {
-      "recordId": "GKP-KTN-230714-T-MDN30-2",
-      "recordType": "rice",
+      "recordId": "FIELD-002",
+      "recordType": "Field",
       "properties": [
-          {
-            "name": "varietas",
-            "dataType": 1,
-            "stringValue": "Ketan"
-          },
-          {
-            "name": "kedaluwarsa",
-            "dataType": 2,
-            "intValue": 1469268000
-          },
-          {
-            "name": "berat",
-            "dataType": 2,
-            "intValue": 10
-          },
-          {
-            "name": "harga",
-            "dataType": 2,
-            "intValue": 180000
-          },
-          {
-            "name": "lokasi",
-            "dataType": 4,
-            "locationValue": {
-              "latitude": -6215655.110884673, 
-              "longitude": 107117470.35390908
-            }
+        {
+          "name": "area",
+          "dataType": 2,
+          "intValue": 1500
+        },
+        {
+          "name": "location",
+          "dataType": 4,
+          "locationValue": {
+            "latitude": -6223333,
+            "longitude": 107022222
           }
-      ],
-      "ownerIndex": 1
+        },
+        {
+          "name": "address",
+          "dataType": 1,
+          "stringValue": "Bekasi, West Java"
+        },
+        {
+          "name": "irrigation",
+          "dataType": 1,
+          "stringValue": "false"
+        }
+      ]
     },
-
     {
-      "recordId": "GKP-I42-230714-T-MDN30-1",
-      "recordType": "rice",
+      "recordId": "PLANT-001",
+      "recordType": "Planting",
       "properties": [
-          {
-            "name": "varietas",
-            "dataType": 1,
-            "stringValue": "IR42"
-          },
-          {
-            "name": "kedaluwarsa",
-            "dataType": 2,
-            "intValue": 1469268000
-          },
-          {
-            "name": "berat",
-            "dataType": 2,
-            "intValue": 50
-          },
-          {
-            "name": "harga",
-            "dataType": 2,
-            "intValue": 500000
-          },
-          {
-            "name": "lokasi",
-            "dataType": 4,
-            "locationValue": {
-              "latitude": -6472867.632936099, 
-              "longitude": 106850324.7086001
-            }
+        {
+          "name": "seed_label",
+          "dataType": 1,
+          "stringValue": "Premium Rice Seeds"
+        },
+        {
+          "name": "seed_weight",
+          "dataType": 2,
+          "intValue": 100
+        },
+        {
+          "name": "variety",
+          "dataType": 1,
+          "stringValue": "Inpari 32"
+        },
+        {
+          "name": "field_id",
+          "dataType": 1,
+          "stringValue": "FIELD-001"
+        },
+        {
+          "name": "planting_date",
+          "dataType": 2,
+          "intValue": 20210115
+        },
+        {
+          "name": "fertilizers",
+          "dataType": 1,
+          "stringValue": "Urea, NPK"
+        },
+        {
+          "name": "pesticides",
+          "dataType": 1,
+          "stringValue": "Organic Pesticide A"
+        },
+        {
+          "name": "capital_source",
+          "dataType": 1,
+          "stringValue": "Self-funded"
+        }
+      ]
+    },
+    {
+      "recordId": "PLANT-002",
+      "recordType": "Planting",
+      "properties": [
+        {
+          "name": "seed_label",
+          "dataType": 1,
+          "stringValue": "Hybrid Rice Seeds"
+        },
+        {
+          "name": "seed_weight",
+          "dataType": 2,
+          "intValue": 120
+        },
+        {
+          "name": "variety",
+          "dataType": 1,
+          "stringValue": "Ciherang"
+        },
+        {
+          "name": "field_id",
+          "dataType": 1,
+          "stringValue": "FIELD-002"
+        },
+        {
+          "name": "planting_date",
+          "dataType": 2,
+          "intValue": 20210220
+        },
+        {
+          "name": "fertilizers",
+          "dataType": 1,
+          "stringValue": "Urea, Phosphate"
+        },
+        {
+          "name": "pesticides",
+          "dataType": 1,
+          "stringValue": "Synthetic Pesticide B"
+        },
+        {
+          "name": "capital_source",
+          "dataType": 1,
+          "stringValue": "Loan"
+        }
+      ]
+    },
+    {
+      "recordId": "HARV-001",
+      "recordType": "Harvest",
+      "properties": [
+        {
+          "name": "planting_id",
+          "dataType": 1,
+          "stringValue": "PLANT-001"
+        },
+        {
+          "name": "harvest_date",
+          "dataType": 2,
+          "intValue": 20210630
+        },
+        {
+          "name": "harvest_method",
+          "dataType": 1,
+          "stringValue": "Mechanized"
+        },
+        {
+          "name": "yield_ton",
+          "dataType": 3,
+          "floatValue": 5.5
+        },
+        {
+          "name": "total_cost",
+          "dataType": 3,
+          "floatValue": 2000
+        },
+        {
+          "name": "sale_date",
+          "dataType": 2,
+          "intValue": 20210705
+        },
+        {
+          "name": "sale_price",
+          "dataType": 3,
+          "floatValue": 5500
+        },
+        {
+          "name": "weight_sold",
+          "dataType": 2,
+          "intValue": 5500
+        }
+      ]
+    },
+    {
+      "recordId": "HARV-002",
+      "recordType": "Harvest",
+      "properties": [
+        {
+          "name": "planting_id",
+          "dataType": 1,
+          "stringValue": "PLANT-002"
+        },
+        {
+          "name": "harvest_date",
+          "dataType": 2,
+          "intValue": 20210710
+        },
+        {
+          "name": "harvest_method",
+          "dataType": 1,
+          "stringValue": "Manual"
+        },
+        {
+          "name": "yield_ton",
+          "dataType": 3,
+          "floatValue": 4.0
+        },
+        {
+          "name": "total_cost",
+          "dataType": 3,
+          "floatValue": 1500
+        },
+        {
+          "name": "sale_date",
+          "dataType": 2,
+          "intValue": 20210715
+        },
+        {
+          "name": "sale_price",
+          "dataType": 3,
+          "floatValue": 4000
+        },
+        {
+          "name": "weight_sold",
+          "dataType": 2,
+          "intValue": 4000
+        }
+      ]
+    },
+    {
+      "recordId": "PDEL-001",
+      "recordType": "PaddyDelivery",
+      "properties": [
+        {
+          "name": "harvest_ids",
+          "dataType": 1,
+          "stringValue": "HARV-001, HARV-002"
+        },
+        {
+          "name": "delivery_date",
+          "dataType": 2,
+          "intValue": 20210720
+        },
+        {
+          "name": "waybill_tonnage",
+          "dataType": 3,
+          "floatValue": 9.5
+        },
+        {
+          "name": "total_price",
+          "dataType": 3,
+          "floatValue": 9500
+        },
+        {
+          "name": "truck_id",
+          "dataType": 1,
+          "stringValue": "TRUCK-123"
+        },
+        {
+          "name": "driver",
+          "dataType": 1,
+          "stringValue": "Driver A"
+        },
+        {
+          "name": "transportation_cost",
+          "dataType": 3,
+          "floatValue": 500
+        }
+      ]
+    },
+    {
+      "recordId": "PRECP-001",
+      "recordType": "PaddyReception",
+      "properties": [
+        {
+          "name": "delivery_id",
+          "dataType": 1,
+          "stringValue": "PDEL-001"
+        },
+        {
+          "name": "reception_date",
+          "dataType": 2,
+          "intValue": 20210725
+        },
+        {
+          "name": "young_grains",
+          "dataType": 2,
+          "intValue": 50
+        },
+        {
+          "name": "empty_grains",
+          "dataType": 2,
+          "intValue": 75
+        },
+        {
+          "name": "dead_grains",
+          "dataType": 2,
+          "intValue": 30
+        },
+        {
+          "name": "cleaned_tonnage",
+          "dataType": 3,
+          "floatValue": 9.0
+        },
+        {
+          "name": "price",
+          "dataType": 3,
+          "floatValue": 9500
+        }
+      ]
+    },
+    {
+      "recordId": "PPROC-001",
+      "recordType": "PaddyProcessing",
+      "properties": [
+        {
+          "name": "reception_id",
+          "dataType": 1,
+          "stringValue": "PRECP-001"
+        },
+        {
+          "name": "processing_date",
+          "dataType": 2,
+          "intValue": 20210730
+        },
+        {
+          "name": "husking_details",
+          "dataType": 6,
+          "husking_details": {
+            "moisture_content": 14.0,
+            "breakage_rate": 5.0
           }
-      ],
-      "ownerIndex": 0
-    }
-  ],
-
-  "agents": [
-    {
-      "username": "aan",
-      "password": "aan",
-      "publicKey": "03e0fd9c5300cef3e8a06d96eec7beaa788e35d765e3162f1c2f298ed7bd42d11a",
-      "name": "Aan",
-      "email": "aan@payluck.id",
-      "privateKey": "a55c61402e8d8d6d68fb89bce1ed2d33acb0bb0b7900d7570157aff4522a0ce2",
-      "encryptedKey": "{\"iv\":\"V2/NvLJhHqM/vIRDuGMqyQ==\",\"v\":1,\"iter\":10000,\"ks\":128,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"5ZCfEf+ktdM=\",\"ct\":\"qoBfz17LQ1hhSVgKX8UPlLXnr8FQkFDsH2vXtphyLSl3L8nO36tmtuOwY+xxwZl/5BJCON4xscgjIujT2NGJ5l5L3N1I0hkF\"}",
-      "hashedPassword": "gtzI4rJfOnK1zIMq0h6yP2xhp1359w/gxVcia0QsmcU="
+        },
+        {
+          "name": "whitening_details",
+          "dataType": 7,
+          "whitening_details": {
+            "moisture_content": 12.0,
+            "breakage_rate": 3.0,
+            "whiteness_level": 80.0,
+            "transparency": 70.0,
+            "milling_degree": 90.0
+          }
+        },
+        {
+          "name": "polishing_details",
+          "dataType": 8,
+          "polishing_details": {
+            "moisture_content": 11.0,
+            "breakage_rate": 2.0,
+            "whiteness_level": 85.0,
+            "transparency": 75.0,
+            "milling_degree": 95.0
+          }
+        },
+        {
+          "name": "production_results",
+          "dataType": 10,
+          "production_results": {
+            "rice": 8.5,
+            "broken": 0.3,
+            "bran": 0.1,
+            "husk": 0.1,
+            "rejected": 0.05
+          }
+        }
+      ]
     },
     {
-      "username": "nita",
-      "password": "nita",
-      "publicKey": "0256887bcdf287f4615a6d70ea000ec6656e07130bdc51761c0b93e174c2faf366",
-      "name": "Nita",
-      "email": "nita@ui.net",
-      "privateKey": "8a9730473deab8cce54739184770d7750856eebbb70a70fd3635a424b7c64c89",
-      "encryptedKey": "{\"iv\":\"WzAYx3emuEPoR4FmbFGSiw==\",\"v\":1,\"iter\":10000,\"ks\":128,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"77Bi/kRDEUQ=\",\"ct\":\"Fxyl7hWK024UEGbyq4OuVIboWrMEWXbWwK4RS6m63m+18ieXB67yMxutspa358QT+GaLoOwOAF9Cc5h8xdlUalVWJR5vEwr4\"}",
-      "hashedPassword": "w09sBGIZwaNoe/ioR4mBWvxQcGvf5UOGBkXS4kPN0Sk="
-    },
-    {
-      "username": "nurul",
-      "password": "nurul",
-      "publicKey": "0291cd33019aae3408e886818e5b4bde9ad673a470237161ea730222f1c7c4b79d",
-      "name": "Nurul",
-      "email": "nurul@payluck.id",
-      "privateKey": "471e8436469359c0926ac5a0c3803b6dcd65ed3cf4f76ed743b5d0f4be6ec2bb",
-      "encryptedKey": "{\"iv\":\"7iOLctjSTFEnDYr6z2yClQ==\",\"v\":1,\"iter\":10000,\"ks\":128,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"IZ4B8uj/p3I=\",\"ct\":\"NxZxgMMiY7hVcCJTbnDzssp4+rmj1mQ1ror8lTm8OE1TCmY+Gd01H/aFzfs1C0vOIQ2ooiv6B9Kd9torInhPPMI2QlJ2a+Dl\"}",
-      "hashedPassword": "dl2UpUhZ8dtefAOFma5bSniOHOyEAjXo+KqlDQsT0Ag="
-    },
-    
-    {
-      "username": "ahab",
-      "password": "ahab",
-      "publicKey": "03ba003ea48e3599f73939b7908ca361cf539cc0baa7b0a049c590bcc46e2ef55a",
-      "name": "Ahab",
-      "email": "ahab@pequod.net",
-      "privateKey": "063f9ca21d4ef4955f3e120374f7c22272f42106c466a91d01779efba22c2cb6",
-      "encryptedKey": "{\"iv\":\"sKGty1gSvZGmCwzkGy0vvg==\",\"v\":1,\"iter\":10000,\"ks\":128,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"lYT7rTJpTV0=\",\"ct\":\"taU8UNB5oJrquzEiXBV+rTTnEq9XmaO9BKeLQQWWuyXJdZ6wR9G+FYrKPkYnXc30iS/9amSG272C8qqnPdM4OE0dvjIdWgSd\"}",
-      "hashedPassword": "KNYr+guWkg77DbaWofgK72LrNdaQzzJGIkk2rEHqP9Y="
-    },
-
-    {
-      "username": "ishmael",
-      "password": "ishmael",
-      "publicKey": "02f85a333b5a7db155285bdd39d61fa1b0c65550187e22b16f5a6d2f63b7f2df6c",
-      "name": "Ishmael",
-      "email": "ishmael@pequod.net",
-      "privateKey": "1ab38027228aef9a6642d6acbf7aa62e8db18795cc09c3e03586e49396afb3df",
-      "encryptedKey": "{\"iv\":\"ao0PDb6ukW58Z6FaUDnjKQ==\",\"v\":1,\"iter\":10000,\"ks\":128,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"lAcyL1LM+Gs=\",\"ct\":\"txXSA33qYOmFmEQvL20VtbcvROLh4WWurhCaQKzsVd50x5KOyHnOzECxRlWr3VnpAErDdYRd3Nuq2jtC9KT4+DxhW2S10aeo\"}",
-      "hashedPassword": "WYvPSxUEzs0jffzHa9fqQn1Q8BbZYUVhYr5ghAL4jn4="
+      "recordId": "RICE-001",
+      "recordType": "Rice",
+      "properties": [
+        {
+          "name": "processing_id",
+          "dataType": 1,
+          "stringValue": "PPROC-001"
+        },
+        {
+          "name": "packaging_date",
+          "dataType": 2,
+          "intValue": 20210805
+        },
+        {
+          "name": "expiration_date",
+          "dataType": 2,
+          "intValue": 20230805
+        },
+        {
+          "name": "weight",
+          "dataType": 2,
+          "intValue": 8500
+        },
+        {
+          "name": "price",
+          "dataType": 3,
+          "floatValue": 10200
+        },
+        {
+          "name": "location",
+          "dataType": 4,
+          "locationValue": {
+            "latitude": -6222222,
+            "longitude": 107011111
+          }
+        }
+      ]
     }
   ]
 }
