@@ -55,8 +55,8 @@ const updateSubmitter = state => e => {
   let value = null;
   if (state.update) {
     value = state.update;
-  } else if (name === 'harga') {
-    value = parseInt(state.tmp.harga.replace(/^Rp\./, '').replace(/\./g, ''), 10);
+  } else if (name === 'price') {
+    value = parseInt(state.tmp.price.replace(/^Rp\./, '').replace(/\./g, ''), 10);
   } else if (dataType === 'LOCATION') {
     // Convert latitude and longitude to millionths for LOCATION dataType
     value = {
@@ -89,7 +89,7 @@ const updateSubmitter = state => e => {
     });
 };
 
-// Produces custom input fields for location, harga, and shock
+// Produces custom input fields for location, price, and shock
 const typedInput = state => {
   const { dataType, name } = state.property
 
@@ -121,15 +121,15 @@ const typedInput = state => {
     ]
   }
 
-  if (name === 'harga') {
+  if (name === 'price') {
     return m('.col.md-8',
       m('input.form-control', {
         placeholder: 'Rp.0',
         oninput: m.withAttr('value', value => {
           // Format the input to include "Rp." and thousand separators
-          state.tmp.harga = formatCurrencyInput(value);
+          state.tmp.price = formatCurrencyInput(value);
         }),
-        value: state.tmp.harga
+        value: state.tmp.price
       }))
   }
   const formatCurrencyInput = (value) => {
@@ -153,7 +153,7 @@ const typedInput = state => {
     ]
   }
 */
-  if (name === 'kedaluwarsa') {
+  if (name === 'expiration_date') {
     return m('.col-md-8', [
       m('input.form-control', {
         placeholder: 'Enter Temperature...',

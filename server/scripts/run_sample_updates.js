@@ -98,7 +98,7 @@ const updateProperty = (update, oldValue) => {
 
     property.locationValue = protos.Location.create(intLoc)
 
-  } else if (property.name === 'harga') {
+  } else if (property.name === 'price') {
     oldValue = JSON.parse(oldValue)
 
     const defaultHarga = { x: 0, y: 0 }

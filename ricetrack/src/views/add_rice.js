@@ -12,18 +12,18 @@ const layout = require('../components/layout')
  * Possible selection options
  */
 const authorizableProperties = [
-  ['lokasi', 'Lokasi'],
-  ['harga', 'Harga'],
+  ['location', 'Lokasi'],
+  ['price', 'Harga'],
 ]
 
-const varietasOptions = ['Ciherang', 'Muncul', 'Mentik Wangi', 'IR42', 'Ketan'];
+const packaging_dateOptions = ['Ciherang', 'Muncul', 'Mentik Wangi', 'IR42', 'Ketan'];
 
 /**
  * The Form for tracking a new rice.
  */
 const AddRice = {
   oninit (vnode) {
-    /*
+    
     // Format current date and time in a "DD-MM-YYYY" HH:mm format
     const now = new Date()
     const day = String(now.getDate()).padStart(2, '0')
@@ -32,8 +32,8 @@ const AddRice = {
     const hours = String(now.getHours()).padStart(2, '0')
     const minutes = String(now.getMinutes()).padStart(2, '0')
 
-    vnode.state.tgltransaksi = `${day}-${month}-${year} ${hours}:${minutes}`
-    */
+    vnode.state.packaging_date = `${day}-${month}-${year} ${hours}:${minutes}`
+   
 
     // Initialize Latitude and Longitude
     if (navigator.geolocation) {
@@ -67,84 +67,100 @@ const AddRice = {
 
   view (vnode) {
 
-    return m('.rice_form',
-             m('form', {
-               onsubmit: (e) => {
-                 e.preventDefault()
-                 _handleSubmit(vnode.attrs.signingKey, vnode.state)
-               }
-             },
-             m('legend', 'Tambahkan Beras'),
-             layout.row([
+    return m(
+      ".rice_form",
+      m(
+        "form",
+        {
+          onsubmit: (e) => {
+            e.preventDefault();
+            _handleSubmit(vnode.attrs.signingKey, vnode.state);
+          },
+        },
+        m("legend", "Tambahkan Beras"),
+        layout.row([
+          _formGroup(
+            "Nomor Seri",
+            m("input.form-control", {
+              type: "text",
+              oninput: m.withAttr("value", (value) => {
+                vnode.state.serialNumber = value;
+              }),
+              value: vnode.state.serialNumber,
+            })
+          ),
 
-             _formGroup('Nomor Seri', m('input.form-control', {
-               type: 'text',
-               oninput: m.withAttr('value', (value) => {
-                 vnode.state.serialNumber = value
-               }),
-               value: vnode.state.serialNumber
-             })),
-             
-             _formGroup('Varietas', 
-              m('select.form-control', {
-                onchange: m.withAttr('value', (value) => {
-                  vnode.state.varietas = value;
-                }),
-                value: vnode.state.varietas
-              }, [
-                m('option', { value: '', disabled: true, selected: true }, 'Pilih Varietas'),
-                varietasOptions.map((option) =>
-                  m('option', { value: option }, option)
-                )
-              ])
-            )]),
+          _formGroup(
+            "Tanggal Pengemasan",
+            m("input.form-control", {
+              type: "text",
+              oninput: m.withAttr("value", (value) => {
+                vnode.state.packaging_date = value;
+              }),
+              value: vnode.state.packaging_date,
+            })
+          ),
+        ]),
 
-             layout.row([
-               _formGroup('Berat (kg)', m('input.form-control', {
-                 type: 'number',
-                 step: 'any',
-                 oninput: m.withAttr('value', (value) => {
-                   vnode.state.berat = value
-                 }),
-                 value: vnode.state.berat
-               })),
-               _formGroup('Harga (Rp)', m('input.form-control', {
-                type: 'text',
-                oninput: m.withAttr('value', (value) => {
-                  vnode.state.harga = formatHargaInput(value);
-                }),
-                value: vnode.state.harga
-              }))
-             ]),
-             
-             layout.row([
-               _formGroup('Garis Lintang', m('input.form-control', {
-                 type: 'number',
-                 step: 'any',
-                 min: -90,
-                 max: 90,
-                 value: vnode.state.latitude,
-                 oninput: m.withAttr('value', (value) => {
-                   vnode.state.latitude = value
-                 }),
-               })),
-               _formGroup('Garis Bujur', m('input.form-control', {
-                 type: 'number',
-                 step: 'any',
-                 min: -180,
-                 max: 180,
-                 value: vnode.state.longitude,
-                 oninput: m.withAttr('value', (value) => {
-                   vnode.state.longitude = value
-                 }),
-               }))
-             ]),
+        layout.row([
+          _formGroup(
+            "Berat (kg)",
+            m("input.form-control", {
+              type: "number",
+              step: "any",
+              oninput: m.withAttr("value", (value) => {
+                vnode.state.weight = value;
+              }),
+              value: vnode.state.weight,
+            })
+          ),
+          _formGroup(
+            "Harga (Rp)",
+            m("input.form-control", {
+              type: "text",
+              oninput: m.withAttr("value", (value) => {
+                vnode.state.price = formatHargaInput(value);
+              }),
+              value: vnode.state.price,
+            })
+          ),
+        ]),
 
-             
-             m('.row.justify-content-end.align-items-end',
-               m('col-2',
-                 m('button.btn.btn-primary',
-                   'Tambahkan')))))
+        layout.row([
+          _formGroup(
+            "Garis Lintang",
+            m("input.form-control", {
+              type: "number",
+              step: "any",
+              min: -90,
+              max: 90,
+              value: vnode.state.latitude,
+              oninput: m.withAttr("value", (value) => {
+                vnode.state.latitude = value;
+              }),
+            })
+          ),
+          _formGroup(
+            "Garis Bujur",
+            m("input.form-control", {
+              type: "number",
+              step: "any",
+              min: -180,
+              max: 180,
+              value: vnode.state.longitude,
+              oninput: m.withAttr("value", (value) => {
+                vnode.state.longitude = value;
+              }),
+            })
+          ),
+        ]),
+
+        m(
+          ".row.justify-content-end.align-items-end",
+          m("col-2", m("button.btn.btn-primary", "Tambahkan"))
+        )
+      )
+    );
   }
 }
 const formatHargaInput = (value) => {
@@ -178,32 +194,32 @@ const _updateReporters = (vnode, reporterIndex) => {
  * Extract the appropriate values to pass to the create record transaction.
  */
 const _handleSubmit = (signingKey, state) => {
-  /*
+  
   // Mengonversi 'DD-MM-YYYY HH:mm' ke format 'YYYY-MM-DDTHH:mm'
-  const parts = state.tgltransaksi.split(" ")
+  const parts = state.packaging_date.split(" ")
   const dateParts = parts[0].split("-")
   const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}T${parts[1]}`
 
   // Konversi string tanggal yang sudah diformat ke timestamp Tanggal Produksi
-  const tgltransaksiTimestamp = new Date(formattedDate).getTime()
+  const packagingTimestamp = new Date(formattedDate).getTime()
   // Pastikan hasilnya adalah angka yang valid
   
-  if (isNaN(tgltransaksiTimestamp)) {
+  if (isNaN(packagingTimestamp)) {
     alert("Format tanggal tidak valid. Gunakan format DD-MM-YYYY HH:mm")
     return
   }
 
   // Konversi string tanggal yang sudah diformat ke objek Date untuk menghitung Kedaluwarsa
-  const tgltransaksiDate = new Date(formattedDate)
+  const packagingDate = new Date(formattedDate)
   // Pastikan hasilnya adalah tanggal yang valid
-  if (isNaN(tgltransaksiDate.getTime())) {
+  if (isNaN(packagingDate.getTime())) {
     alert("Format tanggal produksi tidak valid. Gunakan format DD-MM-YYYY HH:mm")
     return
   }
-  */
+  
 
-  const addTwoYears = () => {
-    const now = new Date();
+  const addTwoYears = (date) => {
+    const now = new Date(date);
     const year = now.getFullYear();
     const month = now.getMonth();
     const day = now.getDate();
@@ -226,14 +242,14 @@ const _handleSubmit = (signingKey, state) => {
   
   console.log('Kedaluwarsa: ', addTwoYears())
 
-  // Hitung tanggal kedaluwarsa (2 tahun setelah tgltransaksi)
-  // const kedaluwarsaDate = new Date(tgltransaksiDate)
-  // kedaluwarsaDate.setFullYear(kedaluwarsaDate.getFullYear() + 2)
-  // Konversi tanggal kedaluwarsa ke timestamp atau format yang diinginkan
-  // const kedaluwarsaTimestamp = kedaluwarsaDate.getTime()
-  const kedaluwarsaTimestamp = addTwoYears()
-  const parsedHarga = parseInt(state.harga.replace(/^Rp\./, '').replace(/\./g, ''), 10);
-  const parsedBerat = state.berat ? parseInt(state.berat, 10) : 0;
+  // Hitung tanggal expiration_date (2 tahun setelah packaging_date)
+  //const expirationDate = new Date(packagingDate)
+  //expirationDate.setFullYear(expirationDate.getFullYear() + 2)
+  // Konversi tanggal expiration_date ke timestamp atau format yang diinginkan
+  //const expirationTimestamp = expirationDate.getTime()
+  const expirationTimestamp = addTwoYears(state.packaging_date)
+  const parsedHarga = parseInt(state.price.replace(/^Rp\./, '').replace(/\./g, ''), 10);
+  const parsedBerat = state.weight ? parseInt(state.weight, 10) : 0;
   console.log('Berat: ', parsedBerat)
 
   const recordPayload = payloads.createRecord({
@@ -241,27 +257,27 @@ const _handleSubmit = (signingKey, state) => {
     recordType: 'rice',
     properties: [
       {
-        name: 'varietas',
-        stringValue: state.varietas,
-        dataType: payloads.createRecord.enum.STRING
-      },
-      {
-        name: 'kedaluwarsa',
-        intValue: kedaluwarsaTimestamp,
+        name: 'packaging_date',
+        stringValue: state.packaging_date,
         dataType: payloads.createRecord.enum.INT
       },
       {
-        name: 'berat',
+        name: 'expiration_date',
+        intValue: expirationTimestamp,
+        dataType: payloads.createRecord.enum.INT
+      },
+      {
+        name: 'weight',
         intValue: parsedBerat,
         dataType: payloads.createRecord.enum.INT
       },
       {
-        name: 'harga',
+        name: 'price',
         intValue: parsedHarga,
         dataType: payloads.createRecord.enum.INT
       },
       {
-        name: 'lokasi',
+        name: 'location',
         locationValue: {
           latitude: parseInt(state.latitude * 1000000, 10),
           longitude: parseInt(state.longitude * 1000000, 10)

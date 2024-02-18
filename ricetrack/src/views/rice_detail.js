@@ -38,12 +38,12 @@ const RiceDetail = {
         // Log untuk mengecek properti dalam proposal
         console.log('Proposal diterima dengan properti:', proposalsToAnswer.properties);
 
-        // Cari properti harga dalam proposal
-        const hargaProp = proposalsToAnswer.properties.find(prop => prop.name === 'harga');
+        // Cari properti price dalam proposal
+        const hargaProp = proposalsToAnswer.properties.find(prop => prop.name === 'price');
         if (hargaProp) {
             console.log('Harga dalam proposal:', hargaProp.intValue);
         } else {
-            console.log('Tidak ada harga yang ditetapkan dalam proposal');
+            console.log('Tidak ada price yang ditetapkan dalam proposal');
         }
 */
         return m('.rice-detail',
@@ -52,7 +52,7 @@ const RiceDetail = {
             proposalsToAnswer.length > 0
                 ? proposalsToAnswer.map(proposal =>
                     m('.proposal-to-answer',
-                        m('p', `${_agentByKey(vnode.state.agents, proposal.issuingAgent).name} menawarkan produk ini kepada anda seharga ${formatCurrency(getPropertyValue(record, 'harga'))}.`),
+                        m('p', `${_agentByKey(vnode.state.agents, proposal.issuingAgent).name} menawarkan produk ini kepada anda seharga ${formatCurrency(getPropertyValue(record, 'price'))}.`),
                         m('button.btn.btn-primary', {
                             onclick: () => {
                                 _answerProposal(record, proposal.receivingAgent, ROLE_TO_ENUM[proposal.role.toLowerCase()], payloads.answerProposal.enum.ACCEPT)
@@ -91,7 +91,7 @@ const RiceDetail = {
 };
 
 const _displayRecordDetails = (record, owner, custodian) => {
-    console.log('Kedaluwarsa int: ', getPropertyValue(record, 'kedaluwarsa', 0))
+    console.log('Kedaluwarsa int: ', getPropertyValue(record, 'expiration_date', 0))
     return [
         _row(
             _labelProperty('Tanggal Produksi', formatTimestamp(record.creationTime)),
@@ -100,15 +100,15 @@ const _displayRecordDetails = (record, owner, custodian) => {
         _row(
             _labelProperty('Pemilik', _agentLink(owner)),
             // _labelProperty('Kustodian', _agentLink(custodian))
-            _labelProperty('Varietas', getPropertyValue(record, 'varietas')),
+            _labelProperty('Tanggal Pengemasan', getPropertyValue(record, 'packaging_date')),
         ),
         _row(
-            _labelProperty('Berat (kg)', getPropertyValue(record, 'berat', 0)),
-            _labelProperty('Kedaluwarsa', formatTimestamp(getPropertyValue(record, 'kedaluwarsa', 0)))
+            _labelProperty('Berat (kg)', getPropertyValue(record, 'weight', 0)),
+            _labelProperty('Kedaluwarsa', formatTimestamp(getPropertyValue(record, 'expiration_date', 0)))
         ),
         _row(
-            _labelProperty('Harga', formatCurrency(getPropertyValue(record, 'harga'))),
-            _labelProperty('Lokasi', _propLink(record, 'lokasi', formatLocation(getPropertyValue(record, 'lokasi'))))
+            _labelProperty('Harga', formatCurrency(getPropertyValue(record, 'price'))),
+            _labelProperty('Lokasi', _propLink(record, 'location', formatLocation(getPropertyValue(record, 'location'))))
         )
     ];
 };

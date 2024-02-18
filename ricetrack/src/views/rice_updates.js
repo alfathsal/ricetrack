@@ -145,7 +145,7 @@ const _renderAllTab = (state) => {
     })) : [];
     */
     const locationUpdates = getPropertyUpdates(state.record)
-        .filter(update => update.propertyName === 'lokasi')
+        .filter(update => update.propertyName === 'location')
         .map(update => {
             let updateCopy = Object.assign({}, update);
             delete updateCopy.propertyName; // Menghapus propertyName
@@ -153,7 +153,7 @@ const _renderAllTab = (state) => {
         }) || [];
 
     const priceUpdates = getPropertyUpdates(state.record)
-        .filter(update => update.propertyName === 'harga')
+        .filter(update => update.propertyName === 'price')
         .map(update => {
             let updateCopy = Object.assign({}, update);
             delete updateCopy.propertyName; // Menghapus propertyName
@@ -257,7 +257,7 @@ const _renderCustodianTab = (state) => {
     ])
 }
 const _renderLocationTab = (record) => {
-    const locationUpdates = getPropertyUpdates(record).filter(update => update.propertyName === 'lokasi');
+    const locationUpdates = getPropertyUpdates(record).filter(update => update.propertyName === 'location');
 
     return m('table.table.table-striped', [
         m('thead',
@@ -277,7 +277,7 @@ const _renderLocationTab = (record) => {
     ]);
 };
 const _renderPriceTab = (record) => {
-    const priceUpdates = getPropertyUpdates(record).filter(update => update.propertyName === 'harga');
+    const priceUpdates = getPropertyUpdates(record).filter(update => update.propertyName === 'price');
 
     return m('table.table.table-striped', [
         m('thead',

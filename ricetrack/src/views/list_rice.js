@@ -57,7 +57,7 @@ const RiceList = {
             ).map((rec) =>
               m('tr', [
                 m('td', m(`a[href=/rice/${rec.recordId}]`, { oncreate: m.route.link }, truncate(rec.recordId, { length: 32 }))),
-                m('td', getPropertyValue(rec, 'varietas')),
+                m('td', getPropertyValue(rec, 'packaging_date')),
                 m('td', formatTimestamp(getOldestPropertyUpdateTime(rec))),
                 m('td', formatTimestamp(getLatestPropertyUpdateTime(rec))),
                 m('td', m(`a[href=/rice-updates/${rec.recordId}]`, { oncreate: m.route.link }, countUniqueUpdates(rec).toString()))

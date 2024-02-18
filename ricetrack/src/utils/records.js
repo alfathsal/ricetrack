@@ -56,12 +56,12 @@ const countUniqueUpdates = (record) => {
   }
   */
   const locationTimestamps = getPropertyUpdates(record)
-    .filter(update => update.propertyName === 'lokasi')
+    .filter(update => update.propertyName === 'location')
     .map(update => update.timestamp);
     timestamps.push(...locationTimestamps);
   /*
   const priceTimestamps = getPropertyUpdates(record)
-    .filter(update => update.propertyName === 'harga')
+    .filter(update => update.propertyName === 'price')
     .map(update => update.timestamp);
   timestamps.push(...priceTimestamps);
   */

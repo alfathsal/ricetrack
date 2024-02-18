@@ -36,7 +36,7 @@ const getCurrentReporters = (record) => {
     .filter(([key, properties]) =>
       key !== publicKey &&
       key !== record.owner &&
-      properties.includes('lokasi')
+      properties.includes('location')
     )
     .map(([key, properties]) => [key, properties]);
 };
@@ -139,7 +139,7 @@ const ManageReporters = {
             m('button.btn.btn-primary', {
               onclick: async () => {
                 if (selectedReporterKey) {
-                  await _authorizeReporter(recordId, selectedReporterKey, ['lokasi'])
+                  await _authorizeReporter(recordId, selectedReporterKey, ['location'])
                     .then(() => {
                       alert("Proposal menjadi reporter telah di kirim ke " + _agentByKey(agents, selectedReporterKey).name + ".")
                       window.history.back();

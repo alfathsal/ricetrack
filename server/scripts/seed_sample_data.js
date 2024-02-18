@@ -118,9 +118,9 @@ protos.compile()
   .then(() => {
     console.log('Creating Records . . .');
     const recordAdditions = records.map(record => {
-      // Update the kedaluwarsa field
+      // Update the expiration_date field
       record.properties.forEach(property => {
-        if (property.name === 'kedaluwarsa') {
+        if (property.name === 'expiration_date') {
           property.intValue = addTwoYears();
         }
       });

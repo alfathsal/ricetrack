@@ -43,12 +43,12 @@ const formatCurrency = (value) => {
 };
 
 /**
- * Memformat data lokasi menjadi string koordinat.
+ * Memformat data location menjadi string koordinat.
  */
-const formatLocation = (lokasi) => {
-  if (lokasi && lokasi.latitude !== undefined && lokasi.longitude !== undefined) {
-    let latitude = parsing.toFloat(lokasi.latitude);
-    let longitude = parsing.toFloat(lokasi.longitude);
+const formatLocation = (location) => {
+  if (location && location.latitude !== undefined && location.longitude !== undefined) {
+    let latitude = parsing.toFloat(location.latitude);
+    let longitude = parsing.toFloat(location.longitude);
     return `${latitude}, ${longitude}`;
   }
   return 'Unknown';

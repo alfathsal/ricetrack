@@ -13,7 +13,7 @@ const TransferOwnership = {
         vnode.state.record = null;
         vnode.state.agents = [];
         vnode.state.selectedAgent = null;
-        vnode.state.harga = '';
+        vnode.state.price = '';
 
         // Load the record and agents
         Promise.all([
@@ -22,7 +22,7 @@ const TransferOwnership = {
         ]).then(([record, agents]) => {
             vnode.state.record = record;
             vnode.state.agents = agents.filter(agent => agent.key !== record.owner);
-            vnode.state.harga = parseInt(getPropertyValue(record, 'harga', 0)).toLocaleString('id');
+            vnode.state.price = parseInt(getPropertyValue(record, 'price', 0)).toLocaleString('id');
             // Set the initial selected agent if agents are available
             if (vnode.state.agents.length > 0) {
                 vnode.state.selectedAgent = vnode.state.agents[0].key;
@@ -50,9 +50,9 @@ const TransferOwnership = {
                 m('label', 'Harga (Rp):'),
                 m('input.form-control', {
                     type: 'text',
-                    value: vnode.state.harga,
+                    value: vnode.state.price,
                     onchange: m.withAttr('value', value => {
-                        vnode.state.harga = value;
+                        vnode.state.price = value;
                     })
                 })
             ),
@@ -66,16 +66,16 @@ const TransferOwnership = {
 }
 
 const _submitTransfer = (vnode) => {
-    const harga = parseInt(vnode.state.harga.replace(/[^0-9]/g, ''), 10);
-    console.log('harga', harga);
+    const price = parseInt(vnode.state.price.replace(/[^0-9]/g, ''), 10);
+    console.log('price', price);
     const recordId = vnode.state.record.recordId;
     const selectedAgent = vnode.state.selectedAgent;
 
     // Refactored Update Payload
     const updateHarga = {
-        name: 'harga',
+        name: 'price',
         dataType: payloads.updateProperties.enum.INT,
-        intValue: harga
+        intValue: price
     };
 
     const updatePayload = payloads.updateProperties({
@@ -104,7 +104,7 @@ const _submitTransfer = (vnode) => {
             m.route.set(`/rice/${recordId}`);
         })
         .catch(error => {
-            console.error('Failed to update harga or create proposal:', error);
+            console.error('Failed to update price or create proposal:', error);
         });
 }
 
