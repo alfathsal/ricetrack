@@ -1,32 +1,272 @@
 [
   {
-    "name": "rice",
+    "name": "Field",
     "properties": [
-        {
-          "name": "varietas",
-          "dataType": 1,
-          "required": true
-        },
-        {
-          "name": "berat",
-          "dataType": 2,
-          "required": true
-        },
-        {
-          "name": "lokasi",
-          "dataType": 4,
-          "required": true
-        },
-        {
-          "name": "kedaluwarsa",
-          "dataType": 2,
-          "required": true
-        },
-        {
-          "name": "harga",
-          "dataType": 2,
-          "required": true
-        }
+      {
+        "name": "area",
+        "dataType": 2,
+        "required": true
+      },
+      {
+        "name": "location",
+        "dataType": 4,
+        "required": true
+      },
+      {
+        "name": "address",
+        "dataType": 1,
+        "required": false
+      },
+      {
+        "name": "irrigation",
+        "dataType": 5,
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "Planting",
+    "properties": [
+      {
+        "name": "seed_label",
+        "dataType": 1,
+        "required": true
+      },
+      {
+        "name": "seed_weight",
+        "dataType": 2,
+        "required": true
+      },
+      {
+        "name": "variety",
+        "dataType": 1,
+        "required": true
+      },
+      {
+        "name": "field_id",
+        "dataType": 1,
+        "required": true
+      },
+      {
+        "name": "planting_date",
+        "dataType": 2,
+        "required": true
+      },
+      {
+        "name": "fertilizers",
+        "dataType": 1,
+        "required": false
+      },
+      {
+        "name": "pesticides",
+        "dataType": 1,
+        "required": false
+      },
+      {
+        "name": "capital_source",
+        "dataType": 1,
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "Harvest",
+    "properties": [
+      {
+        "name": "planting_id",
+        "dataType": 1,
+        "required": true
+      },
+      {
+        "name": "harvest_date",
+        "dataType": 2,
+        "required": true
+      },
+      {
+        "name": "harvest_method",
+        "dataType": 1,
+        "required": false
+      },
+      {
+        "name": "yield_ton",
+        "dataType": 3,
+        "required": true
+      },
+      {
+        "name": "total_cost",
+        "dataType": 3,
+        "required": false
+      },
+      {
+        "name": "sale_date",
+        "dataType": 2,
+        "required": true
+      },
+      {
+        "name": "sale_price",
+        "dataType": 3,
+        "required": true
+      },
+      {
+        "name": "weight_sold",
+        "dataType": 2,
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "PaddyDelivery",
+    "properties": [
+      {
+        "name": "harvest_ids",
+        "dataType": 1,
+        "required": true
+      },
+      {
+        "name": "delivery_date",
+        "dataType": 2,
+        "required": true
+      },
+      {
+        "name": "waybill_tonnage",
+        "dataType": 3,
+        "required": true
+      },
+      {
+        "name": "total_price",
+        "dataType": 3,
+        "required": true
+      },
+      {
+        "name": "truck_id",
+        "dataType": 1,
+        "required": true
+      },
+      {
+        "name": "driver",
+        "dataType": 1,
+        "required": true
+      },
+      {
+        "name": "transportation_cost",
+        "dataType": 3,
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "PaddyReception",
+    "properties": [
+      {
+        "name": "delivery_id",
+        "dataType": 1,
+        "required": true
+      },
+      {
+        "name": "reception_date",
+        "dataType": 2,
+        "required": true
+      },
+      {
+        "name": "young_grains",
+        "dataType": 2,
+        "required": false
+      },
+      {
+        "name": "empty_grains",
+        "dataType": 2,
+        "required": false
+      },
+      {
+        "name": "dead_grains",
+        "dataType": 2,
+        "required": false
+      },
+      {
+        "name": "cleaned_tonnage",
+        "dataType": 3,
+        "required": true
+      },
+      {
+        "name": "price",
+        "dataType": 3,
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "PaddyProcessing",
+    "properties": [
+      {
+        "name": "reception_id",
+        "dataType": 1,
+        "required": true
+      },
+      {
+        "name": "processing_date",
+        "dataType": 2,
+        "required": true
+      },
+      {
+        "name": "husking_details",
+        "dataType": 6,
+        "required": false
+      },
+      {
+        "name": "whitening_details",
+        "dataType": 7,
+        "required": false
+      },
+      {
+        "name": "polishing_details",
+        "dataType": 8,
+        "required": false
+      },
+      {
+        "name": "packaging_details",
+        "dataType": 9,
+        "required": false
+      },
+      {
+        "name": "production_results",
+        "dataType": 10,
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "Rice",
+    "properties": [
+      {
+        "name": "processing_id",
+        "dataType": 1,
+        "required": true
+      },
+      {
+        "name": "packaging_date",
+        "dataType": 2,
+        "required": true
+      },
+      {
+        "name": "expiration_date",
+        "dataType": 2,
+        "required": true
+      },
+      {
+        "name": "weight",
+        "dataType": 2,
+        "required": true
+      },
+      {
+        "name": "price",
+        "dataType": 3,
+        "required": true
+      },
+      {
+        "name": "location",
+        "dataType": 4,
+        "required": true
+      }
     ]
   }
 ]
