@@ -124,11 +124,11 @@ message PackagingDetails {
 }
 
 message ProductionResults {
-  float rice = 1;        // Quantity of finished rice produced
-  float broken = 2; // Quantity of broken rice
-  float bran = 3;        // Quantity of rice bran
-  float husk = 4;        // Quantity of rice husk
-  float rejected = 5; // Quantity of rejected rice
+  float rice = 1;        
+  float broken = 2; 
+  float bran = 3;       
+  float husk = 4;        
+  float rejected = 5;
 }
 
 message PropertyPage {
