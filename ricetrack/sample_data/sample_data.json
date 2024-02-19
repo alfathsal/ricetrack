@@ -2,7 +2,7 @@
   "records": [
     {
       "recordId": "FIELD-001",
-      "recordType": "Field",
+      "recordType": "field",
       "properties": [
         {
           "name": "area",
@@ -27,11 +27,12 @@
           "dataType": 5,
           "boolValue": true
         }
-      ]
+      ],
+      "ownerIndex": 0
     },
     {
       "recordId": "FIELD-002",
-      "recordType": "Field",
+      "recordType": "field",
       "properties": [
         {
           "name": "area",
@@ -56,11 +57,12 @@
           "dataType": 5,
           "boolValue": false
         }
-      ]
+      ],
+      "ownerIndex": 0
     },
     {
       "recordId": "PLANT-001",
-      "recordType": "Planting",
+      "recordType": "paddy",
       "properties": [
         {
           "name": "seed_label",
@@ -102,11 +104,12 @@
           "dataType": 1,
           "stringValue": "Self-funded"
         }
-      ]
+      ],
+      "ownerIndex": 0
     },
     {
       "recordId": "PLANT-002",
-      "recordType": "Planting",
+      "recordType": "paddy",
       "properties": [
         {
           "name": "seed_label",
@@ -148,11 +151,12 @@
           "dataType": 1,
           "stringValue": "Loan"
         }
-      ]
+      ],
+      "ownerIndex": 0
     },
     {
       "recordId": "HARV-001",
-      "recordType": "Harvest",
+      "recordType": "paddy",
       "properties": [
         {
           "name": "planting_id",
@@ -194,11 +198,12 @@
           "dataType": 2,
           "intValue": 5500
         }
-      ]
+      ],
+      "ownerIndex": 0
     },
     {
       "recordId": "HARV-002",
-      "recordType": "Harvest",
+      "recordType": "paddy",
       "properties": [
         {
           "name": "planting_id",
@@ -240,11 +245,12 @@
           "dataType": 2,
           "intValue": 4000
         }
-      ]
+      ],
+      "ownerIndex": 0
     },
     {
       "recordId": "PDEL-001",
-      "recordType": "PaddyDelivery",
+      "recordType": "grains",
       "properties": [
         {
           "name": "harvest_ids",
@@ -281,11 +287,12 @@
           "dataType": 3,
           "floatValue": 500
         }
-      ]
+      ],
+      "ownerIndex": 2
     },
     {
       "recordId": "PRECP-001",
-      "recordType": "PaddyReception",
+      "recordType": "grains",
       "properties": [
         {
           "name": "delivery_id",
@@ -330,11 +337,12 @@
             "longitude": 107011111
           }
         }
-      ]
+      ],
+      "ownerIndex": 1
     },
     {
       "recordId": "PPROC-001",
-      "recordType": "PaddyProcessing",
+      "recordType": "grains",
       "properties": [
         {
           "name": "reception_id",
@@ -387,11 +395,12 @@
             "rejected": 0.05
           }
         }
-      ]
+      ],
+      "ownerIndex": 1
     },
     {
       "recordId": "RICE-001",
-      "recordType": "Rice",
+      "recordType": "rice",
       "properties": [
         {
           "name": "processing_id",
@@ -401,12 +410,12 @@
         {
           "name": "packaging_date",
           "dataType": 2,
-          "intValue": 20210805
+          "intValue": 1406129874
         },
         {
           "name": "expiration_date",
           "dataType": 2,
-          "intValue": 20230805
+          "intValue": 1469268000
         },
         {
           "name": "weight",
@@ -422,11 +431,64 @@
           "name": "location",
           "dataType": 4,
           "locationValue": {
-            "latitude": -6222222,
-            "longitude": 107011111
+            "latitude": -6215655.110884673,
+            "longitude": 107117470.35390908
           }
         }
-      ]
+      ],
+      "ownerIndex": 1
+    }
+  ],
+  "agents": [
+    {
+      "username": "aan",
+      "password": "aan",
+      "publicKey": "03e0fd9c5300cef3e8a06d96eec7beaa788e35d765e3162f1c2f298ed7bd42d11a",
+      "name": "Aan",
+      "email": "aan@payluck.id",
+      "privateKey": "a55c61402e8d8d6d68fb89bce1ed2d33acb0bb0b7900d7570157aff4522a0ce2",
+      "encryptedKey": "{\"iv\":\"V2/NvLJhHqM/vIRDuGMqyQ==\",\"v\":1,\"iter\":10000,\"ks\":128,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"5ZCfEf+ktdM=\",\"ct\":\"qoBfz17LQ1hhSVgKX8UPlLXnr8FQkFDsH2vXtphyLSl3L8nO36tmtuOwY+xxwZl/5BJCON4xscgjIujT2NGJ5l5L3N1I0hkF\"}",
+      "hashedPassword": "gtzI4rJfOnK1zIMq0h6yP2xhp1359w/gxVcia0QsmcU="
+    },
+    {
+      "username": "nita",
+      "password": "nita",
+      "publicKey": "0256887bcdf287f4615a6d70ea000ec6656e07130bdc51761c0b93e174c2faf366",
+      "name": "Nita",
+      "email": "nita@ui.net",
+      "privateKey": "8a9730473deab8cce54739184770d7750856eebbb70a70fd3635a424b7c64c89",
+      "encryptedKey": "{\"iv\":\"WzAYx3emuEPoR4FmbFGSiw==\",\"v\":1,\"iter\":10000,\"ks\":128,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"77Bi/kRDEUQ=\",\"ct\":\"Fxyl7hWK024UEGbyq4OuVIboWrMEWXbWwK4RS6m63m+18ieXB67yMxutspa358QT+GaLoOwOAF9Cc5h8xdlUalVWJR5vEwr4\"}",
+      "hashedPassword": "w09sBGIZwaNoe/ioR4mBWvxQcGvf5UOGBkXS4kPN0Sk="
+    },
+    {
+      "username": "nurul",
+      "password": "nurul",
+      "publicKey": "0291cd33019aae3408e886818e5b4bde9ad673a470237161ea730222f1c7c4b79d",
+      "name": "Nurul",
+      "email": "nurul@payluck.id",
+      "privateKey": "471e8436469359c0926ac5a0c3803b6dcd65ed3cf4f76ed743b5d0f4be6ec2bb",
+      "encryptedKey": "{\"iv\":\"7iOLctjSTFEnDYr6z2yClQ==\",\"v\":1,\"iter\":10000,\"ks\":128,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"IZ4B8uj/p3I=\",\"ct\":\"NxZxgMMiY7hVcCJTbnDzssp4+rmj1mQ1ror8lTm8OE1TCmY+Gd01H/aFzfs1C0vOIQ2ooiv6B9Kd9torInhPPMI2QlJ2a+Dl\"}",
+      "hashedPassword": "dl2UpUhZ8dtefAOFma5bSniOHOyEAjXo+KqlDQsT0Ag="
+    },
+    {
+      "username": "ahab",
+      "password": "ahab",
+      "publicKey": "03ba003ea48e3599f73939b7908ca361cf539cc0baa7b0a049c590bcc46e2ef55a",
+      "name": "Ahab",
+      "email": "ahab@pequod.net",
+      "privateKey": "063f9ca21d4ef4955f3e120374f7c22272f42106c466a91d01779efba22c2cb6",
+      "encryptedKey": "{\"iv\":\"sKGty1gSvZGmCwzkGy0vvg==\",\"v\":1,\"iter\":10000,\"ks\":128,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"lYT7rTJpTV0=\",\"ct\":\"taU8UNB5oJrquzEiXBV+rTTnEq9XmaO9BKeLQQWWuyXJdZ6wR9G+FYrKPkYnXc30iS/9amSG272C8qqnPdM4OE0dvjIdWgSd\"}",
+      "hashedPassword": "KNYr+guWkg77DbaWofgK72LrNdaQzzJGIkk2rEHqP9Y="
+    },
+    {
+      "username": "ishmael",
+      "password": "ishmael",
+      "publicKey": "02f85a333b5a7db155285bdd39d61fa1b0c65550187e22b16f5a6d2f63b7f2df6c",
+      "name": "Ishmael",
+      "email": "ishmael@pequod.net",
+      "privateKey": "1ab38027228aef9a6642d6acbf7aa62e8db18795cc09c3e03586e49396afb3df",
+      "encryptedKey": "{\"iv\":\"ao0PDb6ukW58Z6FaUDnjKQ==\",\"v\":1,\"iter\":10000,\"ks\":128,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"lAcyL1LM+Gs=\",\"ct\":\"txXSA33qYOmFmEQvL20VtbcvROLh4WWurhCaQKzsVd50x5KOyHnOzECxRlWr3VnpAErDdYRd3Nuq2jtC9KT4+DxhW2S10aeo\"}",
+      "hashedPassword": "WYvPSxUEzs0jffzHa9fqQn1Q8BbZYUVhYr5ghAL4jn4="
     }
   ]
 }
