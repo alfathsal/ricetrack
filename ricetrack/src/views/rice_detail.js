@@ -100,7 +100,7 @@ const _displayRecordDetails = (record, owner, custodian) => {
         _row(
             _labelProperty('Pemilik', _agentLink(owner)),
             // _labelProperty('Kustodian', _agentLink(custodian))
-            _labelProperty('Tanggal Pengemasan', getPropertyValue(record, 'packaging_date')),
+            _labelProperty('Tanggal Kemasan', formatTimestamp(getPropertyValue(record, 'packaging_date'))),
         ),
         _row(
             _labelProperty('Berat (kg)', getPropertyValue(record, 'weight', 0)),
