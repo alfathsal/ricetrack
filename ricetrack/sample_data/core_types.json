@@ -212,7 +212,7 @@
         "dataType": 2,
         "required": true
       },
-      {
+{
         "name": "husking_details",
         "dataType": 6,
         "required": false
@@ -240,7 +240,7 @@
     ]
   },
   {
-    "name": "Rice",
+    "name": "rice",
     "properties": [
       {
         "name": "processing_id",
@@ -264,7 +264,7 @@
       },
       {
         "name": "price",
-        "dataType": 3,
+        "dataType": 2,
         "required": true
       },
       {

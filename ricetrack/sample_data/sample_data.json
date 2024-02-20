@@ -2,7 +2,7 @@
   "records": [
     {
       "recordId": "FIELD-001",
-      "recordType": "field",
+      "recordType": "Field",
       "properties": [
         {
           "name": "area",
@@ -32,7 +32,7 @@
     },
     {
       "recordId": "FIELD-002",
-      "recordType": "field",
+      "recordType": "Field",
       "properties": [
         {
           "name": "area",
@@ -62,7 +62,7 @@
     },
     {
       "recordId": "PLANT-001",
-      "recordType": "paddy",
+      "recordType": "Planting",
       "properties": [
         {
           "name": "seed_label",
@@ -109,7 +109,7 @@
     },
     {
       "recordId": "PLANT-002",
-      "recordType": "paddy",
+      "recordType": "Planting",
       "properties": [
         {
           "name": "seed_label",
@@ -156,7 +156,7 @@
     },
     {
       "recordId": "HARV-001",
-      "recordType": "paddy",
+      "recordType": "Harvest",
       "properties": [
         {
           "name": "planting_id",
@@ -203,7 +203,7 @@
     },
     {
       "recordId": "HARV-002",
-      "recordType": "paddy",
+      "recordType": "Harvest",
       "properties": [
         {
           "name": "planting_id",
@@ -250,7 +250,7 @@
     },
     {
       "recordId": "PDEL-001",
-      "recordType": "grains",
+      "recordType": "PaddyDelivery",
       "properties": [
         {
           "name": "harvest_ids",
@@ -292,7 +292,7 @@
     },
     {
       "recordId": "PRECP-001",
-      "recordType": "grains",
+      "recordType": "PaddyReception",
       "properties": [
         {
           "name": "delivery_id",
@@ -342,7 +342,7 @@
     },
     {
       "recordId": "PPROC-001",
-      "recordType": "grains",
+      "recordType": "PaddyProcessing",
       "properties": [
         {
           "name": "reception_id",
@@ -357,7 +357,7 @@
         {
           "name": "husking_details",
           "dataType": 6,
-          "husking_details": {
+          "huskingValue": {
             "moisture_content": 14.0,
             "breakage_rate": 5.0
           }
@@ -365,7 +365,7 @@
         {
           "name": "whitening_details",
           "dataType": 7,
-          "whitening_details": {
+          "whiteningValue": {
             "moisture_content": 12.0,
             "breakage_rate": 3.0,
             "whiteness_level": 80.0,
@@ -376,7 +376,7 @@
         {
           "name": "polishing_details",
           "dataType": 8,
-          "polishing_details": {
+          "polishingValue": {
             "moisture_content": 11.0,
             "breakage_rate": 2.0,
             "whiteness_level": 85.0,
@@ -387,7 +387,7 @@
         {
           "name": "production_results",
           "dataType": 10,
-          "production_results": {
+          "productionValue": {
             "rice": 8.5,
             "broken": 0.3,
             "bran": 0.1,
@@ -424,8 +424,8 @@
         },
         {
           "name": "price",
-          "dataType": 3,
-          "floatValue": 10200
+          "dataType": 2,
+          "intValue": 10200
         },
         {
           "name": "location",
