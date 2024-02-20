@@ -79,19 +79,60 @@ message PropertyValue {
   // The type-specific value to initialize or update a Property. Only
   // one of these fields should be used, and it should match the type
   // specified for this Property in the RecordType.
-  oneof value {
+  bytes bytes_value = 3;
+  string string_value = 4;
+  sint64 int_value = 5;
+  float float_value = 6;
+  Location location_value = 7;
+  bool bool_value = 8;
+  HuskingDetails husking_value = 9;
+  WhiteningDetails whitening_value = 10;
+  PolishingDetails polishing_value = 11;
+  PackagingDetails packaging_value = 12;
+  ProductionResults production_value = 13;
+}
+
+message PropertyPage {
+  message ReportedValue {
+    // The index of the reporter id in reporters field
+    uint32 reporter_index = 1;
+    // Approximately when this value was reported, as a Unix UTC
+    // timestamp
+    uint64 timestamp = 2;
+
+    // The type-specific value of the update. Only one of these
+    // fields should be used, and it should match the type
+    // specified for this Property in the RecordType.
     bytes bytes_value = 3;
     string string_value = 4;
     sint64 int_value = 5;
     float float_value = 6;
     Location location_value = 7;
     bool bool_value = 8;
-    HuskingDetails husking_details = 9;
-    WhiteningDetails whitening_details = 10;
-    PolishingDetails polishing_details = 11;
-    PackagingDetails packaging_details = 12;
-    ProductionResults production_results = 13;
+    HuskingDetails husking_value = 9;
+    WhiteningDetails whitening_value = 10;
+    PolishingDetails polishing_value = 11;
+    PackagingDetails packaging_value = 12;
+    ProductionResults production_value = 13;
   }
+
+  // The name of the page's associated Property and the record_id of
+  // its associated Record. These are required to distinguish pages
+  // with colliding addresses.
+  string name = 1;
+  string record_id = 2;
+
+  // ReportedValues are sorted first by timestamp, then by
+  // reporter_index
+  repeated ReportedValue reported_values = 3;
+}
+
+message PropertyPageContainer { repeated PropertyPage entries = 1; }
+
+message Location {
+  // Coordinates are expected to be in millionths of a degree
+  sint64 latitude = 1;
+  sint64 longitude = 2;
 }
 
 message HuskingDetails {
@@ -124,54 +165,9 @@ message PackagingDetails {
 }
 
 message ProductionResults {
-  float rice = 1;        
-  float broken = 2; 
-  float bran = 3;       
-  float husk = 4;        
+  float rice = 1;
+  float broken = 2;
+  float bran = 3;
+  float husk = 4;
   float rejected = 5;
-}
-
-message PropertyPage {
-  message ReportedValue {
-    // The index of the reporter id in reporters field
-    uint32 reporter_index = 1;
-    // Approximately when this value was reported, as a Unix UTC
-    // timestamp
-    uint64 timestamp = 2;
-
-    // The type-specific value of the update. Only one of these
-    // fields should be used, and it should match the type
-    // specified for this Property in the RecordType.
-    oneof value {
-      bytes bytes_value = 3;
-      string string_value = 4;
-      sint64 int_value = 5;
-      float float_value = 6;
-      Location location_value = 7;
-      bool bool_value = 8;
-      HuskingDetails husking_details = 9;
-      WhiteningDetails whitening_details = 10;
-      PolishingDetails polishing_details = 11;
-      PackagingDetails packaging_details = 12;
-      ProductionResults production_results = 13;
-    }
-  }
-
-  // The name of the page's associated Property and the record_id of
-  // its associated Record. These are required to distinguish pages
-  // with colliding addresses.
-  string name = 1;
-  string record_id = 2;
-
-  // ReportedValues are sorted first by timestamp, then by
-  // reporter_index
-  repeated ReportedValue reported_values = 3;
-}
-
-message PropertyPageContainer { repeated PropertyPage entries = 1; }
-
-message Location {
-  // Coordinates are expected to be in millionths of a degree
-  sint64 latitude = 1;
-  sint64 longitude = 2;
 }

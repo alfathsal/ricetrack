@@ -92,13 +92,28 @@ const findReportedValues =
 
 const getValue = dataType => value => {
   return r.branch(
-    r.eq(dataType, 'INT'), value('intValue'),
-    r.eq(dataType, 'STRING'), value('stringValue'),
-    r.eq(dataType, 'FLOAT'), value('floatValue'),
-    r.eq(dataType, 'BYTES'), value('bytesValue'),
-    r.eq(dataType, 'LOCATION'), value('locationValue'),
-    value('bytesValue') // if dataType is unknown, use bytesValue
-  )
+    r.eq(dataType, "INT"),
+    value("intValue"),
+    r.eq(dataType, "STRING"),
+    value("stringValue"),
+    r.eq(dataType, "FLOAT"),
+    value("floatValue"),
+    r.eq(dataType, "BYTES"),
+    value("bytesValue"),
+    r.eq(dataType, "LOCATION"),
+    value("locationValue"),
+    r.eq(dataType, "HUSKING_DETAILS"),
+    value("huskingValue"),
+    r.eq(dataType, "WHITENING_DETAILS"),
+    value("whiteningValue"),
+    r.eq(dataType, "POLISHING_DETAILS"),
+    value("polishingValue"),
+    r.eq(dataType, "PACKAGING_DETAILS"),
+    value("packagingValue"),
+    r.eq(dataType, "PRODUCTION_RESULTS"),
+    value("productionValue"),
+    value("bytesValue") // if dataType is unknown, use bytesValue
+  );
 }
 
 const getUpdate = dataType => reporterKeys => block => value => {

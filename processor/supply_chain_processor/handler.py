@@ -834,6 +834,14 @@ def _make_new_reported_value(reporter_index, timestamp, prop):
     if attribute == 'location_value':
         reported_value.location_value.latitude = prop.location_value.latitude
         reported_value.location_value.longitude = prop.location_value.longitude
+        
+    elif attribute == 'production_value':
+        reported_value.production_value.rice = prop.production_value.rice
+        reported_value.production_value.broken = prop.production_value.broken
+        reported_value.production_value.bran = prop.production_value.bran
+        reported_value.production_value.husk = prop.production_value.husk
+        reported_value.production_value.rejected = prop.production_value.rejected
+        
     else:
         setattr(
             reported_value,
@@ -849,6 +857,12 @@ DATA_TYPE_TO_ATTRIBUTE = {
     PropertySchema.INT: 'int_value',
     PropertySchema.FLOAT: 'float_value',
     PropertySchema.LOCATION: 'location_value',
+    PropertySchema.BOOL: 'bool_value',
+    PropertySchema.HUSKING_DETAILS: 'husking_value',
+    PropertySchema.WHITENING_DETAILS: 'whitening_value',
+    PropertySchema.POLISHING_DETAILS: 'polishing_value',
+    PropertySchema.PACKAGING_DETAILS: 'packaging_value',
+    PropertySchema.PRODUCTION_RESULTS: 'production_value',
 }
 
 

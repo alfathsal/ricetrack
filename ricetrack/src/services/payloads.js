@@ -52,6 +52,7 @@ const SCPayload = root.lookup('SCPayload')
 const PropertyValue = root.lookup('PropertyValue')
 const PropertySchema = root.lookup('PropertySchema')
 const Location = root.lookup('Location')
+const ProductionResults = root.lookup('ProductionResults')
 const Proposal = root.lookup('Proposal')
 _.map(actionMap, action => {
   return _.set(action, 'proto', root.lookup(action.name))
@@ -65,6 +66,8 @@ const valueXform = propertiesXformer(prop => PropertyValue.create(prop))
 const schemaXform = propertiesXformer(prop => {
   if (prop.locationValue) {
     prop.locationValue = Location.create(prop.locationValue)
+  } else if (prop.productionValue) {
+    prop.productionValue = ProductionResults.create(prop.productionValue);
   }
   return PropertySchema.create(prop)
 })

@@ -29,7 +29,8 @@ const compile = () => {
       'PropertyPageContainer',
       'PropertySchema',
       'PropertyValue',
-      'Location'
+      'Location',
+      'ProductionResults'
     ]),
     loadProtos('proposal.proto', [
       'Proposal',
