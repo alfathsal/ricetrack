@@ -27,8 +27,13 @@ const RiceDetail = {
     vnode.state.owner = null;
 
     try {
+      await _loadData(vnode.attrs.recordId, vnode.state);
+      vnode.state.refreshId = setInterval(() => {
+        _loadData(vnode.attrs.recordId, vnode.state);
+      }, 60000);
       // Fetch the initial rice record
-      const riceRecord = await api.get(`records/${vnode.attrs.recordId}`);
+      //const riceRecord = await api.get(`records/${vnode.attrs.recordId}`);
+      const riceRecord = vnode.state.record
       vnode.state.riceRecord = riceRecord;
       console.log("riceRecord: ", vnode.state.riceRecord);
 
@@ -76,10 +81,6 @@ const RiceDetail = {
 
       // Update the view once all data is fetched
       m.redraw();
-      await _loadData(vnode.attrs.recordId, vnode.state);
-      vnode.state.refreshId = setInterval(() => {
-        _loadData(vnode.attrs.recordId, vnode.state);
-      }, 60000);
     } catch (error) {
       console.error(error);
     }
@@ -188,7 +189,12 @@ const RiceDetail = {
             )
           )
         : null,
-      _displayRecordDetails(record, vnode.state.fieldRecord, vnode.state.plantingRecord, vnode.state.owner),
+      _displayRecordDetails(
+        record,
+        vnode.state.fieldRecord,
+        vnode.state.plantingRecord,
+        vnode.state.owner
+      ),
       _displayInteractionButtons(record, publicKey, isOwner, isCustodian, vnode)
     );
   },
@@ -199,7 +205,7 @@ const _displayRecordDetails = (record, fieldRecord, plantingRecord, owner) => {
     "Kedaluwarsa int: ",
     getPropertyValue(record, "expiration_date", 0)
   );
-  console.log("Owner ", owner)
+  console.log("Owner ", owner);
   return [
     _row(
       _labelProperty("Pemilik", _agentLink(owner)),
@@ -218,10 +224,7 @@ const _displayRecordDetails = (record, fieldRecord, plantingRecord, owner) => {
           formatLocation(getPropertyValue(record, "location"))
         )
       ),
-      _labelProperty(
-        "Varietas",
-        getPropertyValue(plantingRecord, "variety")
-      )
+      _labelProperty("Varietas", getPropertyValue(plantingRecord, "variety"))
     ),
     _row(
       _labelProperty("Berat (kg)", getPropertyValue(record, "weight", 0)),
@@ -237,11 +240,7 @@ const _displayRecordDetails = (record, fieldRecord, plantingRecord, owner) => {
       ),
       _labelProperty(
         "Lokasi Sawah",
-        _propLink(
-          fieldRecord,
-          "location",
-          formatLocation(getPropertyValue(fieldRecord, "location"))
-        )
+        getPropertyValue(fieldRecord, "address")
       )
     ),
   ];
@@ -326,10 +325,10 @@ const _labelProperty = (label, value) => [
   m("dl", m("dt", label), m("dd", value)),
 ];
 const _agentLink = (agent) => {
-  console.log("Agent: ", agent)
-  console.log("Agent name: ", agent.name)
-  m(`a[href=/agents/${agent.key}]`, { oncreate: m.route.link }, agent.name);
-}
+  console.log("Agent: ", agent);
+  console.log("Agent name: ", agent.name);
+  return m(`a[href=/agents/${agent.key}]`, { oncreate: m.route.link }, agent.name);
+};
 const _propLink = (record, propName, content) =>
   m(
     `a[href=/properties/${record.recordId}/${propName}]`,
@@ -338,14 +337,13 @@ const _propLink = (record, propName, content) =>
   );
 
 const _loadData = (recordId, state) => {
-  return api
-    .get(`records/${recordId}`)
-    .then((record) => Promise.all([record, api.get("agents")]))
-    .then(([record, agents]) => {
+  return api.get(`records/${recordId}`).then((record) => {
+    return api.get("agents").then((agents) => {
       state.record = record;
       state.agents = agents;
       state.owner = agents.find((agent) => agent.key === record.owner);
     });
+  });
 };
 
 module.exports = RiceDetail;
