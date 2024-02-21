@@ -131,13 +131,17 @@ protos
 
       const properties = record.properties.map((property) => {
         if (property.dataType === protos.PropertySchema.DataType.LOCATION) {
-          property.locationValue = protos.Location.create(
-            property.locationValue
-          );
-        } else if (property.dataType === protos.PropertySchema.DataType.PRODUCTION_RESULTS) {
-          property.productionValue = protos.ProductionResults.create(
-            property.productionValue
-          );
+          property.locationValue = protos.Location.create(property.locationValue);
+        } else if (property.dataType === protos.PropertySchema.DataType.PRODUCTION) {
+          property.productionValue = protos.Production.create(property.productionValue);
+        } else if (property.dataType === protos.PropertySchema.DataType.PACKAGING) {
+          property.packagingValue = protos.Packaging.create(property.packagingValue);
+        } else if (property.dataType === protos.PropertySchema.DataType.POLISHING) {
+          property.polishingValue = protos.Polishing.create(property.polishingValue);
+        } else if (property.dataType === protos.PropertySchema.DataType.WHITENING) {
+          property.whiteningValue = protos.Whitening.create(property.whiteningValue);
+        } else if (property.dataType === protos.PropertySchema.DataType.HUSKING) {
+          property.huskingValue = protos.Husking.create(property.huskingValue);
         }
         
         return protos.PropertyValue.create(property);

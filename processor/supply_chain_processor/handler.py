@@ -834,14 +834,63 @@ def _make_new_reported_value(reporter_index, timestamp, prop):
     if attribute == 'location_value':
         reported_value.location_value.latitude = prop.location_value.latitude
         reported_value.location_value.longitude = prop.location_value.longitude
-        
+
+    elif attribute == 'husking_value':
+        reported_value.husking_value.moisture_content = (
+            prop.husking_value.moisture_content
+        )
+        reported_value.husking_value.breakage_rate = prop.husking_value.breakage_rate
+
+    elif attribute == "whitening_value":
+        reported_value.whitening_value.moisture_content = (
+            prop.whitening_value.moisture_content
+        )
+        reported_value.whitening_value.breakage_rate = (
+            prop.whitening_value.breakage_rate
+        )
+        reported_value.whitening_value.whiteness_level = (
+            prop.whitening_value.whiteness_level
+        )
+        reported_value.whitening_value.transparency = prop.whitening_value.transparency
+        reported_value.whitening_value.milling_degree = (
+            prop.whitening_value.milling_degree
+        )
+
+    elif attribute == "polishing_value":
+        reported_value.polishing_value.moisture_content = (
+            prop.polishing_value.moisture_content
+        )
+        reported_value.polishing_value.breakage_rate = (
+            prop.polishing_value.breakage_rate
+        )
+        reported_value.polishing_value.whiteness_level = (
+            prop.polishing_value.whiteness_level
+        )
+        reported_value.polishing_value.transparency = prop.polishing_value.transparency
+        reported_value.polishing_value.milling_degree = (
+            prop.polishing_value.milling_degree
+        )
+
+    elif attribute == "packaging_value":
+        reported_value.packaging_value.moisture_content = (
+            prop.packaging_value.moisture_content
+        )
+        reported_value.packaging_value.breakage_rate = (
+            prop.packaging_value.breakage_rate
+        )
+        reported_value.packaging_value.whiteness_level = (
+            prop.packaging_value.whiteness_level
+        )
+        reported_value.packaging_value.transparency = prop.packaging_value.transparency
+        reported_value.packaging_value.milling_degree = prop.packaging_value.milling_degree
+
     elif attribute == 'production_value':
         reported_value.production_value.rice = prop.production_value.rice
         reported_value.production_value.broken = prop.production_value.broken
         reported_value.production_value.bran = prop.production_value.bran
         reported_value.production_value.husk = prop.production_value.husk
         reported_value.production_value.rejected = prop.production_value.rejected
-        
+
     else:
         setattr(
             reported_value,
@@ -858,11 +907,11 @@ DATA_TYPE_TO_ATTRIBUTE = {
     PropertySchema.FLOAT: 'float_value',
     PropertySchema.LOCATION: 'location_value',
     PropertySchema.BOOL: 'bool_value',
-    PropertySchema.HUSKING_DETAILS: 'husking_value',
-    PropertySchema.WHITENING_DETAILS: 'whitening_value',
-    PropertySchema.POLISHING_DETAILS: 'polishing_value',
-    PropertySchema.PACKAGING_DETAILS: 'packaging_value',
-    PropertySchema.PRODUCTION_RESULTS: 'production_value',
+    PropertySchema.HUSKING: 'husking_value',
+    PropertySchema.WHITENING: 'whitening_value',
+    PropertySchema.POLISHING: 'polishing_value',
+    PropertySchema.PACKAGING: 'packaging_value',
+    PropertySchema.PRODUCTION: 'production_value',
 }
 
 

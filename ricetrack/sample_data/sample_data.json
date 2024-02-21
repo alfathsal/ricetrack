@@ -2,7 +2,7 @@
   "records": [
     {
       "recordId": "FIELD-001",
-      "recordType": "Field",
+      "recordType": "field",
       "properties": [
         {
           "name": "area",
@@ -32,7 +32,7 @@
     },
     {
       "recordId": "FIELD-002",
-      "recordType": "Field",
+      "recordType": "field",
       "properties": [
         {
           "name": "area",
@@ -62,7 +62,7 @@
     },
     {
       "recordId": "PLANT-001",
-      "recordType": "Planting",
+      "recordType": "planting",
       "properties": [
         {
           "name": "seed_label",
@@ -109,7 +109,7 @@
     },
     {
       "recordId": "PLANT-002",
-      "recordType": "Planting",
+      "recordType": "planting",
       "properties": [
         {
           "name": "seed_label",
@@ -156,7 +156,7 @@
     },
     {
       "recordId": "HARV-001",
-      "recordType": "Harvest",
+      "recordType": "harvest",
       "properties": [
         {
           "name": "planting_id",
@@ -203,7 +203,7 @@
     },
     {
       "recordId": "HARV-002",
-      "recordType": "Harvest",
+      "recordType": "harvest",
       "properties": [
         {
           "name": "planting_id",
@@ -250,7 +250,7 @@
     },
     {
       "recordId": "PDEL-001",
-      "recordType": "PaddyDelivery",
+      "recordType": "delivery",
       "properties": [
         {
           "name": "harvest_ids",
@@ -292,7 +292,7 @@
     },
     {
       "recordId": "PRECP-001",
-      "recordType": "PaddyReception",
+      "recordType": "receipt",
       "properties": [
         {
           "name": "delivery_id",
@@ -342,7 +342,7 @@
     },
     {
       "recordId": "PPROC-001",
-      "recordType": "PaddyProcessing",
+      "recordType": "processing",
       "properties": [
         {
           "name": "reception_id",
@@ -355,7 +355,7 @@
           "intValue": 20210730
         },
         {
-          "name": "husking_details",
+          "name": "husking",
           "dataType": 6,
           "huskingValue": {
             "moisture_content": 14.0,
@@ -363,7 +363,7 @@
           }
         },
         {
-          "name": "whitening_details",
+          "name": "whitening",
           "dataType": 7,
           "whiteningValue": {
             "moisture_content": 12.0,
@@ -374,7 +374,7 @@
           }
         },
         {
-          "name": "polishing_details",
+          "name": "polishing",
           "dataType": 8,
           "polishingValue": {
             "moisture_content": 11.0,
@@ -385,7 +385,18 @@
           }
         },
         {
-          "name": "production_results",
+          "name": "packaging",
+          "dataType": 9,
+          "packagingValue": {
+            "moisture_content": 11.0,
+            "breakage_rate": 2.0,
+            "whiteness_level": 85.0,
+            "transparency": 75.0,
+            "milling_degree": 95.0
+          }
+        },
+        {
+          "name": "production",
           "dataType": 10,
           "productionValue": {
             "rice": 8.5,

@@ -30,7 +30,11 @@ const compile = () => {
       'PropertySchema',
       'PropertyValue',
       'Location',
-      'ProductionResults'
+      'Husking',
+      'Whitening',
+      'Polishing',
+      'Packaging',
+      'Production'
     ]),
     loadProtos('proposal.proto', [
       'Proposal',

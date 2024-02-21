@@ -52,7 +52,11 @@ const SCPayload = root.lookup('SCPayload')
 const PropertyValue = root.lookup('PropertyValue')
 const PropertySchema = root.lookup('PropertySchema')
 const Location = root.lookup('Location')
-const ProductionResults = root.lookup('ProductionResults')
+const Husking = root.lookup('Husking')
+const Whitening = root.lookup('Whitening')
+const Polishing = root.lookup('Polishing')
+const Packaging = root.lookup('Packaging')
+const Production = root.lookup('Production')
 const Proposal = root.lookup('Proposal')
 _.map(actionMap, action => {
   return _.set(action, 'proto', root.lookup(action.name))
@@ -67,7 +71,15 @@ const schemaXform = propertiesXformer(prop => {
   if (prop.locationValue) {
     prop.locationValue = Location.create(prop.locationValue)
   } else if (prop.productionValue) {
-    prop.productionValue = ProductionResults.create(prop.productionValue);
+    prop.productionValue = Production.create(prop.productionValue)
+  } else if (prop.packagingValue) {
+    prop.packagingValue = Packaging.create(prop.packagingValue)
+  } else if (prop.polishingValue) {
+    prop.polishingValue = Polishing.create(prop.polishingValue)
+  } else if (prop.whiteningValue) {
+    prop.whiteningValue = Whitening.create(prop.whiteningValue)
+  } else if (prop.huskingValue) {
+    prop.huskingValue = Husking.create(prop.huskingValue)
   }
   return PropertySchema.create(prop)
 })

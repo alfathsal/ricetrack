@@ -21,10 +21,18 @@ const moment = require('moment')
 const { FLOAT_PRECISION } = require('./payloads')
 
 const STRINGIFIERS = {
-  LOCATION: v => `${v.latitude}, ${v.longitude}`,
-  PRODUCTION_RESULTS: v => `${v.rice}, ${v.broken}, ${v.bran}, ${v.husk}, ${v.rejected}`, 
-  '*': v => JSON.stringify(v, null, 1).replace(/[{}"]/g, '')
-}
+  LOCATION: (v) => `${v.latitude}, ${v.longitude}`,
+  HUSKING: (v) => `${v.moisture_content}, ${v.breakage_rate}`,
+  WHITENING: (v) =>
+    `${v.moisture_content}, ${v.breakage_rate}, ${v.whiteness_level}, ${v.transparency}, ${v.milling_degree}`,
+  POLISHING: (v) =>
+    `${v.moisture_content}, ${v.breakage_rate}, ${v.whiteness_level}, ${v.transparency}, ${v.milling_degree}`,
+  PACKAGING: (v) =>
+    `${v.moisture_content}, ${v.breakage_rate}, ${v.whiteness_level}, ${v.transparency}, ${v.milling_degree}`,
+  PRODUCTION: (v) =>
+    `${v.rice}, ${v.broken}, ${v.bran}, ${v.husk}, ${v.rejected}`,
+  "*": (v) => JSON.stringify(v, null, 1).replace(/[{}"]/g, ""),
+};
 
 /**
  * Parses a property value by its name or type, returning a string for display

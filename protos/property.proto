@@ -51,11 +51,11 @@ message PropertySchema {
     FLOAT = 3;
     LOCATION = 4;
     BOOL = 5;
-    HUSKING_DETAILS = 6;
-    WHITENING_DETAILS = 7;
-    POLISHING_DETAILS = 8;
-    PACKAGING_DETAILS = 9;
-    PRODUCTION_RESULTS = 10;
+    HUSKING = 6;
+    WHITENING = 7;
+    POLISHING = 8;
+    PACKAGING = 9;
+    PRODUCTION = 10;
   }
 
   // The name of the property, e.g. "expiration_date"
@@ -79,17 +79,19 @@ message PropertyValue {
   // The type-specific value to initialize or update a Property. Only
   // one of these fields should be used, and it should match the type
   // specified for this Property in the RecordType.
-  bytes bytes_value = 3;
-  string string_value = 4;
-  sint64 int_value = 5;
-  float float_value = 6;
-  Location location_value = 7;
-  bool bool_value = 8;
-  HuskingDetails husking_value = 9;
-  WhiteningDetails whitening_value = 10;
-  PolishingDetails polishing_value = 11;
-  PackagingDetails packaging_value = 12;
-  ProductionResults production_value = 13;
+  oneof value {
+    bytes bytes_value = 3;
+    string string_value = 4;
+    sint64 int_value = 5;
+    float float_value = 6;
+    Location location_value = 7;
+    bool bool_value = 8;
+    Husking husking_value = 9;
+    Whitening whitening_value = 10;
+    Polishing polishing_value = 11;
+    Packaging packaging_value = 12;
+    Production production_value = 13;
+  }
 }
 
 message PropertyPage {
@@ -103,17 +105,19 @@ message PropertyPage {
     // The type-specific value of the update. Only one of these
     // fields should be used, and it should match the type
     // specified for this Property in the RecordType.
-    bytes bytes_value = 3;
-    string string_value = 4;
-    sint64 int_value = 5;
-    float float_value = 6;
-    Location location_value = 7;
-    bool bool_value = 8;
-    HuskingDetails husking_value = 9;
-    WhiteningDetails whitening_value = 10;
-    PolishingDetails polishing_value = 11;
-    PackagingDetails packaging_value = 12;
-    ProductionResults production_value = 13;
+    oneof value {
+      bytes bytes_value = 3;
+      string string_value = 4;
+      sint64 int_value = 5;
+      float float_value = 6;
+      Location location_value = 7;
+      bool bool_value = 8;
+      Husking husking_value = 9;
+      Whitening whitening_value = 10;
+      Polishing polishing_value = 11;
+      Packaging packaging_value = 12;
+      Production production_value = 13;
+    }
   }
 
   // The name of the page's associated Property and the record_id of
@@ -135,20 +139,12 @@ message Location {
   sint64 longitude = 2;
 }
 
-message HuskingDetails {
+message Husking {
   float moisture_content = 1;
   float breakage_rate = 2;
 }
 
-message WhiteningDetails {
-  float moisture_content = 1;
-  float breakage_rate = 2;
-  float whiteness_level = 3;
-  float transparency = 4;
-  float milling_degree = 5;
-}
-
-message PolishingDetails {
+message Whitening {
   float moisture_content = 1;
   float breakage_rate = 2;
   float whiteness_level = 3;
@@ -156,7 +152,7 @@ message PolishingDetails {
   float milling_degree = 5;
 }
 
-message PackagingDetails {
+message Polishing {
   float moisture_content = 1;
   float breakage_rate = 2;
   float whiteness_level = 3;
@@ -164,7 +160,15 @@ message PackagingDetails {
   float milling_degree = 5;
 }
 
-message ProductionResults {
+message Packaging {
+  float moisture_content = 1;
+  float breakage_rate = 2;
+  float whiteness_level = 3;
+  float transparency = 4;
+  float milling_degree = 5;
+}
+
+message Production {
   float rice = 1;
   float broken = 2;
   float bran = 3;

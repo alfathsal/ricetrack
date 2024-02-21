@@ -1,6 +1,6 @@
 [
   {
-    "name": "Field",
+    "name": "field",
     "properties": [
       {
         "name": "area",
@@ -25,7 +25,7 @@
     ]
   },
   {
-    "name": "Planting",
+    "name": "planting",
     "properties": [
       {
         "name": "seed_label",
@@ -70,7 +70,7 @@
     ]
   },
   {
-    "name": "Harvest",
+    "name": "harvest",
     "properties": [
       {
         "name": "planting_id",
@@ -115,7 +115,7 @@
     ]
   },
   {
-    "name": "PaddyDelivery",
+    "name": "delivery",
     "properties": [
       {
         "name": "harvest_ids",
@@ -155,7 +155,7 @@
     ]
   },
   {
-    "name": "PaddyReception",
+    "name": "receipt",
     "properties": [
       {
         "name": "delivery_id",
@@ -200,7 +200,7 @@
     ]
   },
   {
-    "name": "PaddyProcessing",
+    "name": "processing",
     "properties": [
       {
         "name": "reception_id",
@@ -213,27 +213,27 @@
         "required": true
       },
 {
-        "name": "husking_details",
+        "name": "husking",
         "dataType": 6,
         "required": false
       },
       {
-        "name": "whitening_details",
+        "name": "whitening",
         "dataType": 7,
         "required": false
       },
       {
-        "name": "polishing_details",
+        "name": "polishing",
         "dataType": 8,
         "required": false
       },
       {
-        "name": "packaging_details",
+        "name": "packaging",
         "dataType": 9,
         "required": false
       },
       {
-        "name": "production_results",
+        "name": "production",
         "dataType": 10,
         "required": true
       }
