@@ -180,7 +180,7 @@
         },
         {
           "name": "total_cost",
-          "dataType": 3,
+          "dataType": 2,
           "floatValue": 2000
         },
         {
@@ -190,7 +190,7 @@
         },
         {
           "name": "sale_price",
-          "dataType": 3,
+          "dataType": 2,
           "floatValue": 5500
         },
         {
@@ -227,7 +227,7 @@
         },
         {
           "name": "total_cost",
-          "dataType": 3,
+          "dataType": 2,
           "floatValue": 1500
         },
         {
@@ -237,7 +237,7 @@
         },
         {
           "name": "sale_price",
-          "dataType": 3,
+          "dataType": 2,
           "floatValue": 4000
         },
         {
@@ -253,9 +253,9 @@
       "recordType": "delivery",
       "properties": [
         {
-          "name": "harvest_ids",
+          "name": "harvest_id",
           "dataType": 1,
-          "stringValue": "HARV-001, HARV-002"
+          "stringValue": "HARV-001"
         },
         {
           "name": "delivery_date",
@@ -269,7 +269,7 @@
         },
         {
           "name": "total_price",
-          "dataType": 3,
+          "dataType": 2,
           "floatValue": 9500
         },
         {
@@ -284,7 +284,7 @@
         },
         {
           "name": "transportation_cost",
-          "dataType": 3,
+          "dataType": 2,
           "floatValue": 500
         }
       ],
@@ -292,7 +292,7 @@
     },
     {
       "recordId": "PRECP-001",
-      "recordType": "receipt",
+      "recordType": "reception",
       "properties": [
         {
           "name": "delivery_id",
@@ -326,7 +326,7 @@
         },
         {
           "name": "price",
-          "dataType": 3,
+          "dataType": 2,
           "floatValue": 9500
         },
         {
@@ -448,6 +448,86 @@
         }
       ],
       "ownerIndex": 1
+    },
+    {
+      "recordId": "RICE-002",
+      "recordType": "rice",
+      "properties": [
+        {
+          "name": "processing_id",
+          "dataType": 1,
+          "stringValue": "PPROC-001"
+        },
+        {
+          "name": "packaging_date",
+          "dataType": 2,
+          "intValue": 1406129874
+        },
+        {
+          "name": "expiration_date",
+          "dataType": 2,
+          "intValue": 1469268000
+        },
+        {
+          "name": "weight",
+          "dataType": 2,
+          "intValue": 8500
+        },
+        {
+          "name": "price",
+          "dataType": 2,
+          "intValue": 10200
+        },
+        {
+          "name": "location",
+          "dataType": 4,
+          "locationValue": {
+            "latitude": -6215655.110884673,
+            "longitude": 107117470.35390908
+          }
+        }
+      ],
+      "ownerIndex": 2
+    },
+    {
+      "recordId": "RICE-003",
+      "recordType": "rice",
+      "properties": [
+        {
+          "name": "processing_id",
+          "dataType": 1,
+          "stringValue": "PPROC-001"
+        },
+        {
+          "name": "packaging_date",
+          "dataType": 2,
+          "intValue": 1406129874
+        },
+        {
+          "name": "expiration_date",
+          "dataType": 2,
+          "intValue": 1469268000
+        },
+        {
+          "name": "weight",
+          "dataType": 2,
+          "intValue": 8500
+        },
+        {
+          "name": "price",
+          "dataType": 2,
+          "intValue": 10200
+        },
+        {
+          "name": "location",
+          "dataType": 4,
+          "locationValue": {
+            "latitude": -6215655.110884673,
+            "longitude": 107117470.35390908
+          }
+        }
+      ],
+      "ownerIndex": 0
     }
   ],
   "agents": [

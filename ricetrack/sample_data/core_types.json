@@ -94,7 +94,7 @@
       },
       {
         "name": "total_cost",
-        "dataType": 3,
+        "dataType": 2,
         "required": false
       },
       {
@@ -104,7 +104,7 @@
       },
       {
         "name": "sale_price",
-        "dataType": 3,
+        "dataType": 2,
         "required": true
       },
       {
@@ -118,7 +118,7 @@
     "name": "delivery",
     "properties": [
       {
-        "name": "harvest_ids",
+        "name": "harvest_id",
         "dataType": 1,
         "required": true
       },
@@ -134,7 +134,7 @@
       },
       {
         "name": "total_price",
-        "dataType": 3,
+        "dataType": 2,
         "required": true
       },
       {
@@ -149,13 +149,13 @@
       },
       {
         "name": "transportation_cost",
-        "dataType": 3,
+        "dataType": 2,
         "required": true
       }
     ]
   },
   {
-    "name": "receipt",
+    "name": "reception",
     "properties": [
       {
         "name": "delivery_id",
@@ -189,7 +189,7 @@
       },
       {
         "name": "price",
-        "dataType": 3,
+        "dataType": 2,
         "required": true
       },
       {
