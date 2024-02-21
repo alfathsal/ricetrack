@@ -19,7 +19,7 @@
       },
       {
         "name": "irrigation",
-        "dataType": 5,
+        "dataType": 1,
         "required": false
       }
     ]

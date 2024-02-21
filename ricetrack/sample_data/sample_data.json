@@ -24,8 +24,8 @@
         },
         {
           "name": "irrigation",
-          "dataType": 5,
-          "boolValue": true
+          "dataType": 1,
+          "stringValue": "true"
         }
       ],
       "ownerIndex": 0
@@ -54,8 +54,8 @@
         },
         {
           "name": "irrigation",
-          "dataType": 5,
-          "boolValue": false
+          "dataType": 1,
+          "stringValue": "false"
         }
       ],
       "ownerIndex": 0
@@ -181,7 +181,7 @@
         {
           "name": "total_cost",
           "dataType": 2,
-          "floatValue": 2000
+          "intValue": 2000
         },
         {
           "name": "sale_date",
@@ -191,7 +191,7 @@
         {
           "name": "sale_price",
           "dataType": 2,
-          "floatValue": 5500
+          "intValue": 5500
         },
         {
           "name": "weight_sold",
@@ -228,7 +228,7 @@
         {
           "name": "total_cost",
           "dataType": 2,
-          "floatValue": 1500
+          "intValue": 1500
         },
         {
           "name": "sale_date",
@@ -238,7 +238,7 @@
         {
           "name": "sale_price",
           "dataType": 2,
-          "floatValue": 4000
+          "intValue": 4000
         },
         {
           "name": "weight_sold",
@@ -270,7 +270,7 @@
         {
           "name": "total_price",
           "dataType": 2,
-          "floatValue": 9500
+          "intValue": 9500
         },
         {
           "name": "truck_id",
@@ -285,7 +285,7 @@
         {
           "name": "transportation_cost",
           "dataType": 2,
-          "floatValue": 500
+          "intValue": 500
         }
       ],
       "ownerIndex": 2
@@ -327,7 +327,7 @@
         {
           "name": "price",
           "dataType": 2,
-          "floatValue": 9500
+          "intValue": 9500
         },
         {
           "name": "location",
@@ -527,7 +527,7 @@
           }
         }
       ],
-      "ownerIndex": 0
+      "ownerIndex": 2
     }
   ],
   "agents": [
