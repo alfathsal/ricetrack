@@ -35,28 +35,6 @@ if (DATA.indexOf('.json') === -1) {
 const { records, agents } = require(`./${DATA}`)
 let createTxn = null
 
-const addTwoYears = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth();
-  const day = now.getDate();
-
-  // Menambahkan dua tahun
-  now.setFullYear(year + 2);
-
-  // Mengatur jam, menit, dan detik ke 0 untuk menghindari perubahan waktu akibat pembulatan atau zona waktu
-  now.setHours(0, 0, 0, 0);
-
-  // Menangani kasus tahun kabisat
-  if (month === 1 && day === 29) { // Februari 29
-    if ((year + 2) % 4 !== 0 || ((year + 2) % 100 === 0 && (year + 2) % 400 !== 0)) {
-      now.setDate(28);
-    }
-  }
-
-  return Math.floor(now.getTime() / 1000); // Mengembalikan Unix timestamp dalam detik
-};
-
 const createProposal = (privateKey, action) => {
   return createTxn(privateKey, encodeTimestampedPayload({
     action: protos.SCPayload.Action.CREATE_PROPOSAL,
@@ -122,13 +100,6 @@ protos
   .then(() => {
     console.log("Creating Records . . .");
     const recordAdditions = records.map((record) => {
-      // Update the expiration_date field
-      record.properties.forEach((property) => {
-        if (property.name === "expiration_date") {
-          property.intValue = addTwoYears();
-        }
-      });
-
       const properties = record.properties.map((property) => {
         if (property.dataType === protos.PropertySchema.DataType.LOCATION) {
           property.locationValue = protos.Location.create(property.locationValue);
