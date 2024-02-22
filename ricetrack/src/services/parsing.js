@@ -22,13 +22,13 @@ const { FLOAT_PRECISION } = require('./payloads')
 
 const STRINGIFIERS = {
   LOCATION: (v) => `${v.latitude}, ${v.longitude}`,
-  HUSKING: (v) => `${v.moisture_content}, ${v.breakage_rate}`,
+  HUSKING: (v) => `${v.moisture}, ${v.breakage}`,
   WHITENING: (v) =>
-    `${v.moisture_content}, ${v.breakage_rate}, ${v.whiteness_level}, ${v.transparency}, ${v.milling_degree}`,
+    `${v.moisture}, ${v.breakage}, ${v.whiteness}, ${v.transparency}, ${v.milling}`,
   POLISHING: (v) =>
-    `${v.moisture_content}, ${v.breakage_rate}, ${v.whiteness_level}, ${v.transparency}, ${v.milling_degree}`,
+    `${v.moisture}, ${v.breakage}, ${v.whiteness}, ${v.transparency}, ${v.milling}`,
   PACKAGING: (v) =>
-    `${v.moisture_content}, ${v.breakage_rate}, ${v.whiteness_level}, ${v.transparency}, ${v.milling_degree}`,
+    `${v.moisture}, ${v.breakage}, ${v.whiteness}, ${v.transparency}, ${v.milling}`,
   PRODUCTION: (v) =>
     `${v.rice}, ${v.broken}, ${v.bran}, ${v.husk}, ${v.rejected}`,
   "*": (v) => JSON.stringify(v, null, 1).replace(/[{}"]/g, ""),

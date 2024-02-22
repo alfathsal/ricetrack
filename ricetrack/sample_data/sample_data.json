@@ -363,41 +363,41 @@
           "name": "husking",
           "dataType": 6,
           "huskingValue": {
-            "moisture_content": 14,
-            "breakage_rate": 5
+            "moisture": 14,
+            "breakage": 5
           }
         },
         {
           "name": "whitening",
           "dataType": 7,
           "whiteningValue": {
-            "moisture_content": 12,
-            "breakage_rate": 3,
-            "whiteness_level": 80,
+            "moisture": 12,
+            "breakage": 3,
+            "whiteness": 80,
             "transparency": 70,
-            "milling_degree": 90
+            "milling": 90
           }
         },
         {
           "name": "polishing",
           "dataType": 8,
           "polishingValue": {
-            "moisture_content": 11,
-            "breakage_rate": 2,
-            "whiteness_level": 85,
+            "moisture": 11,
+            "breakage": 2,
+            "whiteness": 85,
             "transparency": 75,
-            "milling_degree": 95
+            "milling": 95
           }
         },
         {
           "name": "packaging",
           "dataType": 9,
           "packagingValue": {
-            "moisture_content": 11,
-            "breakage_rate": 2,
-            "whiteness_level": 85,
+            "moisture": 11,
+            "breakage": 2,
+            "whiteness": 85,
             "transparency": 75,
-            "milling_degree": 95
+            "milling": 95
           }
         },
         {

@@ -836,53 +836,53 @@ def _make_new_reported_value(reporter_index, timestamp, prop):
         reported_value.location_value.longitude = prop.location_value.longitude
 
     elif attribute == 'husking_value':
-        reported_value.husking_value.moisture_content = (
-            prop.husking_value.moisture_content
+        reported_value.husking_value.moisture = (
+            prop.husking_value.moisture
         )
-        reported_value.husking_value.breakage_rate = prop.husking_value.breakage_rate
+        reported_value.husking_value.breakage = prop.husking_value.breakage
 
     elif attribute == "whitening_value":
-        reported_value.whitening_value.moisture_content = (
-            prop.whitening_value.moisture_content
+        reported_value.whitening_value.moisture = (
+            prop.whitening_value.moisture
         )
-        reported_value.whitening_value.breakage_rate = (
-            prop.whitening_value.breakage_rate
+        reported_value.whitening_value.breakage = (
+            prop.whitening_value.breakage
         )
-        reported_value.whitening_value.whiteness_level = (
-            prop.whitening_value.whiteness_level
+        reported_value.whitening_value.whiteness = (
+            prop.whitening_value.whiteness
         )
         reported_value.whitening_value.transparency = prop.whitening_value.transparency
-        reported_value.whitening_value.milling_degree = (
-            prop.whitening_value.milling_degree
+        reported_value.whitening_value.milling = (
+            prop.whitening_value.milling
         )
 
     elif attribute == "polishing_value":
-        reported_value.polishing_value.moisture_content = (
-            prop.polishing_value.moisture_content
+        reported_value.polishing_value.moisture = (
+            prop.polishing_value.moisture
         )
-        reported_value.polishing_value.breakage_rate = (
-            prop.polishing_value.breakage_rate
+        reported_value.polishing_value.breakage = (
+            prop.polishing_value.breakage
         )
-        reported_value.polishing_value.whiteness_level = (
-            prop.polishing_value.whiteness_level
+        reported_value.polishing_value.whiteness = (
+            prop.polishing_value.whiteness
         )
         reported_value.polishing_value.transparency = prop.polishing_value.transparency
-        reported_value.polishing_value.milling_degree = (
-            prop.polishing_value.milling_degree
+        reported_value.polishing_value.milling = (
+            prop.polishing_value.milling
         )
 
     elif attribute == "packaging_value":
-        reported_value.packaging_value.moisture_content = (
-            prop.packaging_value.moisture_content
+        reported_value.packaging_value.moisture = (
+            prop.packaging_value.moisture
         )
-        reported_value.packaging_value.breakage_rate = (
-            prop.packaging_value.breakage_rate
+        reported_value.packaging_value.breakage = (
+            prop.packaging_value.breakage
         )
-        reported_value.packaging_value.whiteness_level = (
-            prop.packaging_value.whiteness_level
+        reported_value.packaging_value.whiteness = (
+            prop.packaging_value.whiteness
         )
         reported_value.packaging_value.transparency = prop.packaging_value.transparency
-        reported_value.packaging_value.milling_degree = prop.packaging_value.milling_degree
+        reported_value.packaging_value.milling = prop.packaging_value.milling
 
     elif attribute == 'production_value':
         reported_value.production_value.rice = prop.production_value.rice

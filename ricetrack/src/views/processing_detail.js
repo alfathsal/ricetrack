@@ -34,7 +34,7 @@ const ProcessingDetail = {
         _loadData(vnode.attrs.recordId, vnode.state);
       }, 60000);
 
-      vnode.state.processingRecord = vnode.state.record;;
+      vnode.state.processingRecord = vnode.state.record;
       console.log("processingRecord: ", vnode.state.processingRecord);
 
       const processingId = vnode.state.processingRecord.recordId;
@@ -105,7 +105,7 @@ const ProcessingDetail = {
     const record = vnode.state.record;
     const publicKey = api.getPublicKey();
     const isOwner = record.owner === publicKey;
-    
+
     return m(
       ".processing-detail",
       m("h3.text-center", record.recordId),
@@ -185,22 +185,26 @@ const _displayRecordDetails = (
         formatCurrency(getPropertyValue(harvestRecord, "sale_price"))
       )
     ),
-    _row(
-      _labelProperty(
-        "Husking",
-        getPropertyValue(record, "husking")
-      )
-    ),
   ];
 };
 
 const _displayRecordProperties = (record) => {
-  return record.properties.map(prop => {
+  return record.properties.map((prop) => {
     let valueDisplay; // Initialize without a default value
-    console.log("Prop : ", prop)
-    console.log("Prop name", prop.name)
-    console.log("Prop type ", prop.type)
+    console.log("Prop : ", prop);
+    console.log("Prop name", prop.name);
+    console.log("Prop type ", prop.type);
     console.log("Prop val: ", getPropertyValue(record, prop.name));
+
+    const translations = {
+      "reception_id": "Kode Penerimaan",
+      "processing_date": "Tanggal Penggilingan",
+      "husking": "Pecah Kulit",
+      "whitening": "Whitening",
+      "polishing": "Poles",
+      "packaging": "Kemasan",
+      "production": "Hasil Produksi",
+    };
 
     // Adjusting to use prop.type for dataType, and prop.type values are in uppercase
     switch (prop.type) {
@@ -215,6 +219,7 @@ const _displayRecordProperties = (record) => {
         break;
       case "DATE":
         valueDisplay = formatTimestamp(getPropertyValue(record, prop.name));
+        break;
       case "LOCATION":
         // Assuming formatLocation is adequately designed to format the location object
         valueDisplay = formatLocation(getPropertyValue(record, prop.name));
@@ -226,42 +231,74 @@ const _displayRecordProperties = (record) => {
       case "PACKAGING":
       case "PRODUCTION":
         // For complex types, use a specific formatter if needed
-        valueDisplay = formatComplexType(getPropertyValue(record, prop.name), prop.type);
+        valueDisplay = formatComplexType(
+          getPropertyValue(record, prop.name),
+          prop.type
+        );
         break;
       default:
         valueDisplay = "Data type not recognized";
     }
+    console.log("valueDisplay: ", valueDisplay);
 
-    return m(
-      ".row",
-      m(".col-md-6", m("dl", m("dt", prop.name), m("dd", valueDisplay)))
-    );
+    return m(".col-md-6", m("dl", 
+    m("dt", translations[prop.name] || prop.name),
+    m("dd", valueDisplay)
+  ))
   });
-}
+};
 
 // A generic function to format complex types, extended with a type parameter
 function formatComplexType(value, type) {
-  // This function needs to be customized per complex type based on its structure
-  // The example here is a placeholder; you'll need to implement the logic based on actual data structure
-  console.log("Type:", type)
-  console.log("Value: ", value)
+  // Ensure value is not null or undefined
+  if (!value) return "Data not available";
+
+  let formattedValue = "";
   switch (type) {
     case "HUSKING":
-      return `Moisture Content: ${value.moisture_content}, Breakage Rate: ${value.breakage_rate}`;
-    // Add cases for WHITENING, POLISHING, PACKAGING, PRODUCTION as per their structures
+      formattedValue =
+        `Kadar Air: ${value.moisture || "N/A"}, ` +
+        `Kadar Patah: ${value.breakage || "N/A"}`;
+      break;
+    case "WHITENING":
+      formattedValue =
+        `Kadar Air: ${value.moisture || "N/A"}, ` +
+        `Kadar Patah: ${value.breakage || "N/A"}`;
+        `Kadar Putih: ${value.whiteness || "N/A"}, ` +
+        `Kadar Transparansi: ${value.transparency || "N/A"}, ` +
+        `Derajat Sosoh: ${value.milling || "N/A"}`;
+      break;
+    case "POLISHING":
+      formattedValue =
+        `Kadar Air: ${value.moisture || "N/A"}, ` +
+        `Kadar Patah: ${value.breakage || "N/A"}`;
+        `Kadar Putih: ${value.whiteness || "N/A"}, ` +
+        `Kadar Transparansi: ${value.transparency || "N/A"}, ` +
+        `Derajat Sosoh: ${value.milling || "N/A"}`;
+      break;
+    case "PACKAGING":
+      formattedValue =
+        `Kadar Air: ${value.moisture || "N/A"}, ` +
+        `Kadar Patah: ${value.breakage || "N/A"}`;
+        `Kadar Putih: ${value.whiteness || "N/A"}, ` +
+        `Kadar Transparansi: ${value.transparency || "N/A"}, ` +
+        `Derajat Sosoh: ${value.milling || "N/A"}`;
+      break;
+    case "PRODUCTION":
+      formattedValue =
+        `Beras: ${value.rice || "N/A"}, ` +
+        `Menir: ${value.broken || "N/A"}, ` +
+        `Dedak Putih: ${value.bran || "N/A"}, ` +
+        `Dedak Coklat: ${value.husk || "N/A"}, ` +
+        `Reject: ${value.rejected || "N/A"}`;
+      break;
     default:
-      return 'Complex type formatting not implemented';
+      return "Complex type formatting not implemented";
   }
+  return formattedValue;
 }
 
-
-
-const _displayInteractionButtons = (
-  record,
-  publicKey,
-  isOwner,
-  vnode
-) => {
+const _displayInteractionButtons = (record, publicKey, isOwner, vnode) => {
   return m(
     ".row.m-2",
     m(".col.text-center", [
