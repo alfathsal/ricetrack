@@ -140,32 +140,32 @@ message Location {
 }
 
 message Husking {
-  uint32 moisture_content = 1;
-  uint32 breakage_rate = 2;
+  uint32 moisture = 1;
+  uint32 breakage = 2;
 }
 
 message Whitening {
-  uint32 moisture_content = 1;
-  uint32 breakage_rate = 2;
-  uint32 whiteness_level = 3;
+  uint32 moisture = 1;
+  uint32 breakage = 2;
+  uint32 whiteness = 3;
   uint32 transparency = 4;
-  uint32 milling_degree = 5;
+  uint32 milling = 5;
 }
 
 message Polishing {
-  uint32 moisture_content = 1;
-  uint32 breakage_rate = 2;
-  uint32 whiteness_level = 3;
+  uint32 moisture = 1;
+  uint32 breakage = 2;
+  uint32 whiteness = 3;
   uint32 transparency = 4;
-  uint32 milling_degree = 5;
+  uint32 milling = 5;
 }
 
 message Packaging {
-  uint32 moisture_content = 1;
-  uint32 breakage_rate = 2;
-  uint32 whiteness_level = 3;
+  uint32 moisture = 1;
+  uint32 breakage = 2;
+  uint32 whiteness = 3;
   uint32 transparency = 4;
-  uint32 milling_degree = 5;
+  uint32 milling = 5;
 }
 
 message Production {
