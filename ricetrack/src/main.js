@@ -16,6 +16,7 @@ const AgentList = require('./views/list_agents')
 const RiceList = require('./views/list_rice')
 const RiceUpdates = require('./views/rice_updates')
 const RiceDetail = require('./views/rice_detail')
+const ProcessingDetail = require('./views/processing_detail')
 const FieldDetail = require('./views/field_detail')
 const TransferOwnership = require('./views/transfer_ownership')
 const TransferCustodian = require('./views/transfer_custodian')
@@ -112,7 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
     '/agents': resolve(AgentList),
     '/create': resolve(AddRice, true),
     '/rice/:recordId': resolve(RiceDetail),
-    '/fields/:recordId': resolve(FieldDetail),
+    '/field/:recordId': resolve(FieldDetail),
+    '/processing/:recordId': resolve(ProcessingDetail),
     '/rice-updates/:recordId': resolve(RiceUpdates),
     '/transfer-ownership/:recordId': resolve(TransferOwnership),
     '/transfer-custodian/:recordId': resolve(TransferCustodian),
@@ -125,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '/signup': resolve(SignupForm)
   })
 })
-
+/*
 function fetchCurrentPosition() {
   if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -141,3 +143,4 @@ function fetchCurrentPosition() {
 document.addEventListener('DOMContentLoaded', (event) => {
   fetchCurrentPosition();
 });
+*/

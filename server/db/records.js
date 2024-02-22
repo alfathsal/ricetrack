@@ -100,6 +100,8 @@ const getValue = dataType => value => {
     value("floatValue"),
     r.eq(dataType, "BYTES"),
     value("bytesValue"),
+    r.eq(dataType, "DATE"),
+    value("dateValue"),
     r.eq(dataType, "LOCATION"),
     value("locationValue"),
     r.eq(dataType, "HUSKING"),
