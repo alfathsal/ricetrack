@@ -102,7 +102,12 @@ const RiceDetail = {
     ) {
       return m(".alert-warning", `Loading ${vnode.attrs.recordId}`);
     }
-
+    const farmer = vnode.state.agents.find(
+      (agent) => agent.key === vnode.state.plantingRecord.owner);
+    console.log("Farmer: ", farmer);
+    const aggregator = vnode.state.agents.find(
+      (agent) => agent.key === vnode.state.deliveryRecord.owner);  
+    console.log("Aggregator: ", aggregator);
     const record = vnode.state.riceRecord;
     const publicKey = api.getPublicKey();
     const isOwner = record.owner === publicKey;
@@ -193,29 +198,59 @@ const RiceDetail = {
         record,
         vnode.state.fieldRecord,
         vnode.state.plantingRecord,
-        vnode.state.owner
+        vnode.state.harvestRecord,
+        vnode.state.deliveryRecord,
+        vnode.state.receptionRecord,
+        vnode.state.processingRecord,
+        vnode.state.owner,
+        farmer,
+        aggregator
       ),
       _displayInteractionButtons(record, publicKey, isOwner, isCustodian, vnode)
     );
   },
 };
 
-const _displayRecordDetails = (record, fieldRecord, plantingRecord, owner) => {
-  console.log(
-    "Kedaluwarsa int: ",
-    getPropertyValue(record, "expiration_date", 0)
-  );
+const _displayRecordDetails = (
+  record,
+  fieldRecord,
+  plantingRecord,
+  harvestRecord,
+  deliveryRecord,
+  receptionRecord,
+  processingRecord,
+  owner,
+  farmer,
+  aggregator
+  ) => {
   console.log("Owner ", owner);
   return [
     _row(
       _labelProperty("Pemilik", _agentLink(owner)),
-      // _labelProperty('Kustodian', _agentLink(custodian))
+      _labelProperty("Varietas", getPropertyValue(plantingRecord, "variety"))
+    ),
+    _row(
       _labelProperty(
         "Tanggal Kemasan",
         formatTimestamp(getPropertyValue(record, "packaging_date"))
+      ),
+      _labelProperty(
+        "Kedaluwarsa",
+        formatTimestamp(getPropertyValue(record, "expiration_date"))
       )
     ),
     _row(
+      _labelProperty("Berat (kg)", getPropertyValue(record, "weight")),
+      _labelProperty(
+        "Harga Jual (per kg)",
+        formatCurrency(getPropertyValue(record, "price"))
+      )
+    ),
+    _row(
+      _labelProperty(
+        "Tanggal Produksi",
+        formatTimestamp(getPropertyValue(processingRecord, "processing_date"))
+      ),
       _labelProperty(
         "Lokasi Produk",
         _propLink(
@@ -223,24 +258,37 @@ const _displayRecordDetails = (record, fieldRecord, plantingRecord, owner) => {
           "location",
           formatLocation(getPropertyValue(record, "location"))
         )
-      ),
-      _labelProperty("Varietas", getPropertyValue(plantingRecord, "variety"))
+      )
     ),
     _row(
-      _labelProperty("Berat (kg)", getPropertyValue(record, "weight", 0)),
+      _labelProperty("Pabrik Penggiling", getPropertyValue(record, "rmu_id")),
       _labelProperty(
-        "Kedaluwarsa",
-        formatTimestamp(getPropertyValue(record, "expiration_date", 0))
+        "Harga Bahan Baku (per kg)",
+        formatCurrency(getPropertyValue(receptionRecord, "price"))
+      )
+    ),
+    _row(
+      _labelProperty("Nama Pengumpul", _agentLink(aggregator)),
+      _labelProperty(
+        "Harga Beli ke Petani(per kg)",
+        formatCurrency(getPropertyValue(deliveryRecord, "total_cost"))
+      )
+    ),
+    _row(
+      _labelProperty("Nama Petani", _agentLink(farmer)),
+      _labelProperty(
+        "Lokasi Sawah",
+        _recordLink(fieldRecord, getPropertyValue(fieldRecord, "address"))
       )
     ),
     _row(
       _labelProperty(
-        "Harga",
-        formatCurrency(getPropertyValue(record, "price"))
+        "Tanggal Panen",
+        formatTimestamp(getPropertyValue(harvestRecord, "harvest_date"))
       ),
       _labelProperty(
-        "Lokasi Sawah",
-        _recordLink(fieldRecord, getPropertyValue(fieldRecord, "address"))
+        "Harga Jual ke Pengumpul (per kg)",
+        formatCurrency(getPropertyValue(harvestRecord, "sale_price"))
       )
     ),
   ];
@@ -341,11 +389,8 @@ const _propLink = (record, propName, content) =>
     content
   );
 const _recordLink = (record, content) =>
-  m(
-    `a[href=/fields/${record.recordId}]`,
-    { oncreate: m.route.link },
-    content
-  );
+  m(`a[href=/fields/${record.recordId}]`, { oncreate: m.route.link }, content);
+
 const _loadData = (recordId, state) => {
   return api.get(`records/${recordId}`).then((record) => {
     return api.get("agents").then((agents) => {
@@ -355,5 +400,7 @@ const _loadData = (recordId, state) => {
     });
   });
 };
+
+
 
 module.exports = RiceDetail;
