@@ -49,7 +49,7 @@
       },
       {
         "name": "planting_date",
-        "dataType": 2,
+        "dataType": 5,
         "required": true
       },
       {
@@ -79,7 +79,7 @@
       },
       {
         "name": "harvest_date",
-        "dataType": 2,
+        "dataType": 5,
         "required": true
       },
       {
@@ -99,7 +99,7 @@
       },
       {
         "name": "sale_date",
-        "dataType": 2,
+        "dataType": 5,
         "required": true
       },
       {
@@ -124,7 +124,7 @@
       },
       {
         "name": "delivery_date",
-        "dataType": 2,
+        "dataType": 5,
         "required": true
       },
       {
@@ -169,7 +169,7 @@
       },
       {
         "name": "reception_date",
-        "dataType": 2,
+        "dataType": 5,
         "required": true
       },
       {
@@ -214,7 +214,7 @@
       },
       {
         "name": "processing_date",
-        "dataType": 2,
+        "dataType": 5,
         "required": true
       },
 {
@@ -254,7 +254,7 @@
       },
       {
         "name": "packaging_date",
-        "dataType": 2,
+        "dataType": 5,
         "required": true
       },
       {

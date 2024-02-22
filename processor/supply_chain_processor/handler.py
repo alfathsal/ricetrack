@@ -906,7 +906,7 @@ DATA_TYPE_TO_ATTRIBUTE = {
     PropertySchema.INT: 'int_value',
     PropertySchema.FLOAT: 'float_value',
     PropertySchema.LOCATION: 'location_value',
-    PropertySchema.BOOL: 'bool_value',
+    PropertySchema.DATE: 'date_value',
     PropertySchema.HUSKING: 'husking_value',
     PropertySchema.WHITENING: 'whitening_value',
     PropertySchema.POLISHING: 'polishing_value',

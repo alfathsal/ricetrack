@@ -86,8 +86,8 @@
         },
         {
           "name": "planting_date",
-          "dataType": 2,
-          "intValue": 20210115
+          "dataType": 5,
+          "dateValue": 20210115
         },
         {
           "name": "fertilizers",
@@ -133,8 +133,8 @@
         },
         {
           "name": "planting_date",
-          "dataType": 2,
-          "intValue": 20210220
+          "dataType": 5,
+          "dateValue": 20210220
         },
         {
           "name": "fertilizers",
@@ -165,8 +165,8 @@
         },
         {
           "name": "harvest_date",
-          "dataType": 2,
-          "intValue": 20210630
+          "dataType": 5,
+          "dateValue": 20210630
         },
         {
           "name": "harvest_method",
@@ -185,8 +185,8 @@
         },
         {
           "name": "sale_date",
-          "dataType": 2,
-          "intValue": 20210705
+          "dataType": 5,
+          "dateValue": 20210705
         },
         {
           "name": "sale_price",
@@ -212,8 +212,8 @@
         },
         {
           "name": "harvest_date",
-          "dataType": 2,
-          "intValue": 20210710
+          "dataType": 5,
+          "dateValue": 20210710
         },
         {
           "name": "harvest_method",
@@ -232,8 +232,8 @@
         },
         {
           "name": "sale_date",
-          "dataType": 2,
-          "intValue": 20210715
+          "dataType": 5,
+          "dateValue": 20210715
         },
         {
           "name": "sale_price",
@@ -259,8 +259,8 @@
         },
         {
           "name": "delivery_date",
-          "dataType": 2,
-          "intValue": 20210720
+          "dataType": 5,
+          "dateValue": 20210720
         },
         {
           "name": "waybill_tonnage",
@@ -306,8 +306,8 @@
         },
         {
           "name": "reception_date",
-          "dataType": 2,
-          "intValue": 20210725
+          "dataType": 5,
+          "dateValue": 20210725
         },
         {
           "name": "young_grains",
@@ -356,59 +356,59 @@
         },
         {
           "name": "processing_date",
-          "dataType": 2,
-          "intValue": 20210730
+          "dataType": 5,
+          "dateValue": 20210730
         },
         {
           "name": "husking",
           "dataType": 6,
           "huskingValue": {
-            "moisture_content": 14.0,
-            "breakage_rate": 5.0
+            "moisture_content": 14,
+            "breakage_rate": 5
           }
         },
         {
           "name": "whitening",
           "dataType": 7,
           "whiteningValue": {
-            "moisture_content": 12.0,
-            "breakage_rate": 3.0,
-            "whiteness_level": 80.0,
-            "transparency": 70.0,
-            "milling_degree": 90.0
+            "moisture_content": 12,
+            "breakage_rate": 3,
+            "whiteness_level": 80,
+            "transparency": 70,
+            "milling_degree": 90
           }
         },
         {
           "name": "polishing",
           "dataType": 8,
           "polishingValue": {
-            "moisture_content": 11.0,
-            "breakage_rate": 2.0,
-            "whiteness_level": 85.0,
-            "transparency": 75.0,
-            "milling_degree": 95.0
+            "moisture_content": 11,
+            "breakage_rate": 2,
+            "whiteness_level": 85,
+            "transparency": 75,
+            "milling_degree": 95
           }
         },
         {
           "name": "packaging",
           "dataType": 9,
           "packagingValue": {
-            "moisture_content": 11.0,
-            "breakage_rate": 2.0,
-            "whiteness_level": 85.0,
-            "transparency": 75.0,
-            "milling_degree": 95.0
+            "moisture_content": 11,
+            "breakage_rate": 2,
+            "whiteness_level": 85,
+            "transparency": 75,
+            "milling_degree": 95
           }
         },
         {
           "name": "production",
           "dataType": 10,
           "productionValue": {
-            "rice": 8.5,
-            "broken": 0.3,
-            "bran": 0.1,
-            "husk": 0.1,
-            "rejected": 0.05
+            "rice": 8,
+            "broken": 3,
+            "bran": 1,
+            "husk": 1,
+            "rejected": 5
           }
         }
       ],
@@ -425,13 +425,13 @@
         },
         {
           "name": "packaging_date",
-          "dataType": 2,
-          "intValue": 1406129874
+          "dataType": 5,
+          "dateValue": 1406129874
         },
         {
           "name": "expiration_date",
-          "dataType": 2,
-          "intValue": 1469282151
+          "dataType": 5,
+          "dateValue": 1469282151
         },
         {
           "name": "weight",
