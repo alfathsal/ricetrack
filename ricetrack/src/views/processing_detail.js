@@ -145,9 +145,10 @@ const _displayRecordDetails = (
       _labelProperty(
         "Kode Penerimaan",
         getPropertyValue(record, "reception_id"),
-      _labelProperty(
-        "Tanggal Penggilingan",
-        formatTimestamp(getPropertyValue(record, "processing_date")))
+        _labelProperty(
+          "Tanggal Penggilingan",
+          formatTimestamp(getPropertyValue(record, "processing_date"))
+        )
       )
     ),
     _row(
@@ -184,6 +185,12 @@ const _displayRecordDetails = (
         formatCurrency(getPropertyValue(harvestRecord, "sale_price"))
       )
     ),
+    _row(
+      _labelProperty(
+        "Husking",
+        getPropertyValue(record, "husking")
+      )
+    ),
   ];
 };
 
@@ -206,6 +213,8 @@ const _displayRecordProperties = (record) => {
       case "FLOAT":
         valueDisplay = getPropertyValue(record, prop.name).toString();
         break;
+      case "DATE":
+        valueDisplay = formatTimestamp(getPropertyValue(record, prop.name));
       case "LOCATION":
         // Assuming formatLocation is adequately designed to format the location object
         valueDisplay = formatLocation(getPropertyValue(record, prop.name));
@@ -234,6 +243,8 @@ const _displayRecordProperties = (record) => {
 function formatComplexType(value, type) {
   // This function needs to be customized per complex type based on its structure
   // The example here is a placeholder; you'll need to implement the logic based on actual data structure
+  console.log("Type:", type)
+  console.log("Value: ", value)
   switch (type) {
     case "HUSKING":
       return `Moisture Content: ${value.moisture_content}, Breakage Rate: ${value.breakage_rate}`;

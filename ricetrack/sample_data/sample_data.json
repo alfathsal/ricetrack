@@ -357,7 +357,7 @@
         {
           "name": "processing_date",
           "dataType": 5,
-          "dateValue": 20210730
+          "dateValue": 1406129874
         },
         {
           "name": "husking",
@@ -465,13 +465,13 @@
         },
         {
           "name": "packaging_date",
-          "dataType": 2,
-          "intValue": 1406129874
+          "dataType": 5,
+          "dateValue": 1406129874
         },
         {
           "name": "expiration_date",
-          "dataType": 2,
-          "intValue": 1469282151
+          "dataType": 5,
+          "dateValue": 1469282151
         },
         {
           "name": "weight",
@@ -505,13 +505,13 @@
         },
         {
           "name": "packaging_date",
-          "dataType": 2,
-          "intValue": 1406129874
+          "dataType": 5,
+          "dateValue": 1406129874
         },
         {
           "name": "expiration_date",
-          "dataType": 2,
-          "intValue": 1469282151
+          "dataType": 5,
+          "dateValue": 1469282151
         },
         {
           "name": "weight",
