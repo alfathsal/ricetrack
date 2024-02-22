@@ -33,7 +33,7 @@ const RiceDetail = {
       }, 60000);
       // Fetch the initial rice record
       //const riceRecord = await api.get(`records/${vnode.attrs.recordId}`);
-      const riceRecord = vnode.state.record
+      const riceRecord = vnode.state.record;
       vnode.state.riceRecord = riceRecord;
       console.log("riceRecord: ", vnode.state.riceRecord);
 
@@ -240,7 +240,7 @@ const _displayRecordDetails = (record, fieldRecord, plantingRecord, owner) => {
       ),
       _labelProperty(
         "Lokasi Sawah",
-        getPropertyValue(fieldRecord, "address")
+        _recordLink(fieldRecord, getPropertyValue(fieldRecord, "address"))
       )
     ),
   ];
@@ -327,15 +327,25 @@ const _labelProperty = (label, value) => [
 const _agentLink = (agent) => {
   console.log("Agent: ", agent);
   console.log("Agent name: ", agent.name);
-  return m(`a[href=/agents/${agent.key}]`, { oncreate: m.route.link }, agent.name);
+  return m(
+    `a[href=/agents/${agent.key}]`,
+    { oncreate: m.route.link },
+    agent.name
+  );
 };
+
 const _propLink = (record, propName, content) =>
   m(
     `a[href=/properties/${record.recordId}/${propName}]`,
     { oncreate: m.route.link },
     content
   );
-
+const _recordLink = (record, content) =>
+  m(
+    `a[href=/fields/${record.recordId}]`,
+    { oncreate: m.route.link },
+    content
+  );
 const _loadData = (recordId, state) => {
   return api.get(`records/${recordId}`).then((record) => {
     return api.get("agents").then((agents) => {
