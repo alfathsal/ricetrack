@@ -50,7 +50,7 @@ message PropertySchema {
     INT = 2;
     FLOAT = 3;
     LOCATION = 4;
-    BOOL = 5;
+    DATE = 5;
     HUSKING = 6;
     WHITENING = 7;
     POLISHING = 8;
@@ -85,7 +85,7 @@ message PropertyValue {
     sint64 int_value = 5;
     float float_value = 6;
     Location location_value = 7;
-    bool bool_value = 8;
+    uint64 date_value = 8;
     Husking husking_value = 9;
     Whitening whitening_value = 10;
     Polishing polishing_value = 11;
@@ -111,7 +111,7 @@ message PropertyPage {
       sint64 int_value = 5;
       float float_value = 6;
       Location location_value = 7;
-      bool bool_value = 8;
+      uint64 date_value = 8;
       Husking husking_value = 9;
       Whitening whitening_value = 10;
       Polishing polishing_value = 11;
@@ -140,38 +140,38 @@ message Location {
 }
 
 message Husking {
-  float moisture_content = 1;
-  float breakage_rate = 2;
+  uint32 moisture_content = 1;
+  uint32 breakage_rate = 2;
 }
 
 message Whitening {
-  float moisture_content = 1;
-  float breakage_rate = 2;
-  float whiteness_level = 3;
-  float transparency = 4;
-  float milling_degree = 5;
+  uint32 moisture_content = 1;
+  uint32 breakage_rate = 2;
+  uint32 whiteness_level = 3;
+  uint32 transparency = 4;
+  uint32 milling_degree = 5;
 }
 
 message Polishing {
-  float moisture_content = 1;
-  float breakage_rate = 2;
-  float whiteness_level = 3;
-  float transparency = 4;
-  float milling_degree = 5;
+  uint32 moisture_content = 1;
+  uint32 breakage_rate = 2;
+  uint32 whiteness_level = 3;
+  uint32 transparency = 4;
+  uint32 milling_degree = 5;
 }
 
 message Packaging {
-  float moisture_content = 1;
-  float breakage_rate = 2;
-  float whiteness_level = 3;
-  float transparency = 4;
-  float milling_degree = 5;
+  uint32 moisture_content = 1;
+  uint32 breakage_rate = 2;
+  uint32 whiteness_level = 3;
+  uint32 transparency = 4;
+  uint32 milling_degree = 5;
 }
 
 message Production {
-  float rice = 1;
-  float broken = 2;
-  float bran = 3;
-  float husk = 4;
-  float rejected = 5;
+  uint32 rice = 1;
+  uint32 broken = 2;
+  uint32 bran = 3;
+  uint32 husk = 4;
+  uint32 rejected = 5;
 }
