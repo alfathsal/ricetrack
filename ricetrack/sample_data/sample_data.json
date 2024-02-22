@@ -300,6 +300,11 @@
           "stringValue": "PDEL-001"
         },
         {
+          "name": "rmu_id",
+          "dataType": 1,
+          "stringValue": "MCS-001"
+        },
+        {
           "name": "reception_date",
           "dataType": 2,
           "intValue": 20210725
