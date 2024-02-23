@@ -13,7 +13,7 @@ const { _answerProposal, ROLE_TO_ENUM } = require("./proposalUtils");
 const { _agentByKey, _finalizeRecord } = require("./recordUtils");
 const { show, BasicModal } = require("../components/modals");
 
-const RiceDetail = {
+const ReceptionDetail = {
   oninit: async (vnode) => {
     vnode.state.riceRecord = null;
     vnode.state.processingRecord = null;
@@ -34,50 +34,45 @@ const RiceDetail = {
         _loadData(vnode.attrs.recordId, vnode.state);
       }, 60000);
 
-      const riceRecord = vnode.state.record;
-      vnode.state.riceRecord = riceRecord;
-      console.log("riceRecord: ", vnode.state.riceRecord);
-
-      const processingId = riceRecord.properties.find(
-        (prop) => prop.name === "processing_id"
-      ).value;
-      const processingRecord = await api.get(`records/${processingId}`);
-      vnode.state.processingRecord = processingRecord;
+      vnode.state.receptionRecord = vnode.state.record;
+      console.log("receptionRecord: ", vnode.state.receptionRecord);
+      
+      const receptionId = vnode.state.receptionRecord.recordId;
+      const processingRecord = await api.get("records?recordType=processing");
+      vnode.state.processingRecord = processingRecord.filter(
+        (record) => receptionId === getPropertyValue(record, "reception_id")
+      );
       console.log("processingRecord: ", vnode.state.processingRecord);
 
-      const receptionId = processingRecord.properties.find(
-        (prop) => prop.name === "reception_id"
-      ).value;
-      const receptionRecord = await api.get(`records/${receptionId}`);
-      vnode.state.receptionRecord = receptionRecord;
-      console.log("receptionRecord: ", vnode.state.receptionRecord);
+      const processingId = vnode.state.processingRecord.recordId;
+      const riceRecord = await api.get("records?recordType=rice");
+      vnode.state.riceRecord = riceRecord.filter(
+        (record) => processingId === getPropertyValue(record, "processing_id")
+      );
+      console.log("Rice Records: ", vnode.state.riceRecord);
 
-      const deliveryId = receptionRecord.properties.find(
+      const deliveryId = vnode.state.receptionRecord.properties.find(
         (prop) => prop.name === "delivery_id"
       ).value;
-      const deliveryRecord = await api.get(`records/${deliveryId}`);
-      vnode.state.deliveryRecord = deliveryRecord;
+      vnode.state.deliveryRecord = await api.get(`records/${deliveryId}`);
       console.log("deliveryRecord: ", vnode.state.deliveryRecord);
 
-      const harvestId = deliveryRecord.properties.find(
+      const harvestId = vnode.state.deliveryRecord.properties.find(
         (prop) => prop.name === "harvest_id"
       ).value;
-      const harvestRecord = await api.get(`records/${harvestId}`);
-      vnode.state.harvestRecord = harvestRecord;
+      vnode.state.harvestRecord = await api.get(`records/${harvestId}`);
       console.log("harvestRecord: ", vnode.state.harvestRecord);
 
-      const plantingId = harvestRecord.properties.find(
+      const plantingId = vnode.state.harvestRecord.properties.find(
         (prop) => prop.name === "planting_id"
       ).value;
-      const plantingRecord = await api.get(`records/${plantingId}`);
-      vnode.state.plantingRecord = plantingRecord;
+      vnode.state.plantingRecord = await api.get(`records/${plantingId}`);
       console.log("plantingRecord: ", vnode.state.plantingRecord);
 
-      const fieldId = plantingRecord.properties.find(
+      const fieldId = vnode.state.plantingRecord.properties.find(
         (prop) => prop.name === "field_id"
       ).value;
-      const fieldRecord = await api.get(`records/${fieldId}`);
-      vnode.state.fieldRecord = fieldRecord;
+      vnode.state.fieldRecord = await api.get(`records/${fieldId}`);
       console.log("fieldRecord: ", vnode.state.fieldRecord);
 
       // Update the view once all data is fetched
@@ -93,8 +88,6 @@ const RiceDetail = {
 
   view(vnode) {
     if (
-      !vnode.state.riceRecord ||
-      !vnode.state.processingRecord ||
       !vnode.state.receptionRecord ||
       !vnode.state.deliveryRecord ||
       !vnode.state.harvestRecord ||
@@ -112,89 +105,11 @@ const RiceDetail = {
     const record = vnode.state.record;
     const publicKey = api.getPublicKey();
     const isOwner = record.owner === publicKey;
-    const isCustodian = record.custodian === publicKey;
-    // check whether there is a proposal to answer for this user, whether proposal to be an owner, a custodian, or a reporter
-    let proposalsToAnswer = record.proposals.filter(
-      (proposal) => proposal.receivingAgent === publicKey
-    );
-    console.log("Proposals to answer: ", proposalsToAnswer);
-    /*
-        // Log untuk mengecek properti dalam proposal
-        console.log('Proposal diterima dengan properti:', proposalsToAnswer.properties);
 
-        // Cari properti price dalam proposal
-        const hargaProp = proposalsToAnswer.properties.find(prop => prop.name === 'price');
-        if (hargaProp) {
-            console.log('Harga dalam proposal:', hargaProp.intValue);
-        } else {
-            console.log('Tidak ada price yang ditetapkan dalam proposal');
-        }
-*/
     return m(
-      ".rice-detail",
+      ".reception-detail",
       m("h3.text-center", record.recordId),
-      // Menampilkan proposal yang perlu dijawab
-      proposalsToAnswer.length > 0
-        ? proposalsToAnswer.map((proposal) =>
-            m(
-              ".proposal-to-answer",
-              m(
-                "p",
-                `${
-                  _agentByKey(vnode.state.agents, proposal.issuingAgent).name
-                } menawarkan produk ini kepada anda seharga ${formatCurrency(
-                  getPropertyValue(record, "price")
-                )}.`
-              ),
-              m(
-                "button.btn.btn-primary",
-                {
-                  onclick: () => {
-                    _answerProposal(
-                      record,
-                      proposal.receivingAgent,
-                      ROLE_TO_ENUM[proposal.role.toLowerCase()],
-                      payloads.answerProposal.enum.ACCEPT
-                    )
-                      .then(() => {
-                        return _loadData(record.recordId, vnode.state);
-                      })
-                      .then(() => {
-                        m.redraw();
-                      })
-                      .catch((err) => {
-                        console.error("Error while answering proposal:", err);
-                      });
-                  },
-                },
-                "Terima"
-              ),
-              m(
-                "button.btn.btn-danger",
-                {
-                  onclick: () => {
-                    _answerProposal(
-                      record,
-                      proposal.receivingAgent,
-                      ROLE_TO_ENUM[proposal.role.toLowerCase()],
-                      payloads.answerProposal.enum.REJECT
-                    )
-                      .then(() => {
-                        return _loadData(record.recordId, vnode.state);
-                      })
-                      .then(() => {
-                        m.redraw();
-                      })
-                      .catch((err) => {
-                        console.error("Error while answering proposal:", err);
-                      });
-                  },
-                },
-                "Tolak"
-              )
-            )
-          )
-        : null,
+      _displayRecordProperties(record),
       _displayRecordDetails(
         record,
         vnode.state.fieldRecord,
@@ -202,12 +117,12 @@ const RiceDetail = {
         vnode.state.harvestRecord,
         vnode.state.deliveryRecord,
         vnode.state.receptionRecord,
-        vnode.state.processingRecord,
+        vnode.state.riceRecord,
         vnode.state.owner,
         vnode.state.farmer,
         vnode.state.aggregator
       ),
-      _displayInteractionButtons(record, publicKey, isOwner, isCustodian, vnode)
+      _displayInteractionButtons(record, publicKey, isOwner, vnode)
     );
   },
 };
@@ -219,7 +134,7 @@ const _displayRecordDetails = (
   harvestRecord,
   deliveryRecord,
   receptionRecord,
-  processingRecord,
+  riceRecord,
   owner,
   farmer,
   aggregator
@@ -227,51 +142,12 @@ const _displayRecordDetails = (
   console.log("Owner ", owner);
   return [
     _row(
-      _labelProperty("Pemilik", _agentLink(owner)),
-      _labelProperty("Varietas", getPropertyValue(plantingRecord, "variety"))
-    ),
-    _row(
       _labelProperty(
-        "Tanggal Kemasan",
-        formatTimestamp(getPropertyValue(record, "packaging_date"))
-      ),
-      _labelProperty(
-        "Kedaluwarsa",
-        formatTimestamp(getPropertyValue(record, "expiration_date"))
-      )
-    ),
-    _row(
-      _labelProperty("Berat (kg)", getPropertyValue(record, "weight")),
-      _labelProperty(
-        "Harga Jual Produk (per kg)",
-        formatCurrency(getPropertyValue(record, "price"))
-      )
-    ),
-    _row(
-      _labelProperty(
-        "Tanggal Penerimaan",
-        _recordLink(
-          receptionRecord,
-          "reception",
-          formatTimestamp(getPropertyValue(receptionRecord, "reception_date"))
-        )
-      ),
-      _labelProperty(
-        "Tanggal Penggilingan",
-        _recordLink(
-          processingRecord,
-          "processing",
-          formatTimestamp(getPropertyValue(processingRecord, "processing_date"))
-        )
-      )
-    ),
-    _row(
-      _labelProperty(
-        "Lokasi Produk",
-        _propLink(
-          record,
-          "location",
-          formatLocation(getPropertyValue(record, "location"))
+        "Kode Penerimaan",
+        getPropertyValue(record, "reception_id"),
+        _labelProperty(
+          "Tanggal Penggilingan",
+          formatTimestamp(getPropertyValue(record, "processing_date"))
         )
       )
     ),
@@ -296,10 +172,7 @@ const _displayRecordDetails = (
       _labelProperty("Nama Petani", _agentLink(farmer)),
       _labelProperty(
         "Lokasi Sawah",
-        _recordLink(
-          fieldRecord, 
-          "field", 
-          getPropertyValue(fieldRecord, "address"))
+        _recordLink(fieldRecord, getPropertyValue(fieldRecord, "address"))
       )
     ),
     _row(
@@ -315,13 +188,55 @@ const _displayRecordDetails = (
   ];
 };
 
-const _displayInteractionButtons = (
-  record,
-  publicKey,
-  isOwner,
-  isCustodian,
-  vnode
-) => {
+const _displayRecordProperties = (record) => {
+  return record.properties.map((prop) => {
+    let valueDisplay; // Initialize without a default value
+    console.log("Prop : ", prop);
+    console.log("Prop name", prop.name);
+    console.log("Prop type ", prop.type);
+    console.log("Prop val: ", getPropertyValue(record, prop.name));
+/*
+    const translations = {
+      "delivery_id": "Kode Pengiriman",
+      "processing_date": "Tanggal Penggilingan",
+      "husking": "Pecah Kulit",
+      "whitening": "Whitening",
+      "polishing": "Poles",
+      "packaging": "Kemasan",
+      "production": "Hasil Produksi",
+    };
+*/
+    // Adjusting to use prop.type for dataType, and prop.type values are in uppercase
+    switch (prop.type) {
+      case "STRING":
+        valueDisplay = getPropertyValue(record, prop.name);
+        break;
+      case "INT":
+        valueDisplay = getPropertyValue(record, prop.name).toString();
+        break;
+      case "FLOAT":
+        valueDisplay = getPropertyValue(record, prop.name).toString();
+        break;
+      case "DATE":
+        valueDisplay = formatTimestamp(getPropertyValue(record, prop.name));
+        break;
+      case "LOCATION":
+        // Assuming formatLocation is adequately designed to format the location object
+        valueDisplay = formatLocation(getPropertyValue(record, prop.name));
+        break;
+      default:
+        valueDisplay = "Data type not recognized";
+    }
+    console.log("valueDisplay: ", valueDisplay);
+
+    return m(".col-md-6", m("dl", 
+    m("dt", prop.name),
+    m("dd", valueDisplay)
+  ))
+  });
+};
+
+const _displayInteractionButtons = (record, publicKey, isOwner, vnode) => {
   return m(
     ".row.m-2",
     m(".col.text-center", [
@@ -409,8 +324,8 @@ const _propLink = (record, propName, content) =>
     { oncreate: m.route.link },
     content
   );
-const _recordLink = (record, router, content) =>
-  m(`a[href=/${router}/${record.recordId}]`, { oncreate: m.route.link }, content);
+const _recordLink = (record, content) =>
+  m(`a[href=/fields/${record.recordId}]`, { oncreate: m.route.link }, content);
 
 const _loadData = (recordId, state) => {
   return api.get(`records/${recordId}`).then((record) => {
@@ -422,4 +337,4 @@ const _loadData = (recordId, state) => {
   });
 };
 
-module.exports = RiceDetail;
+module.exports = ReceptionDetail;
